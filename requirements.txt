@@ -1,0 +1,25 @@
+# Minimal RAG Demo Requirements
+# Core RAG Stack
+chromadb==1.0.13
+streamlit==1.46.0
+requests==2.32.4
+
+# Data Processing
+pandas==2.3.0
+numpy==2.3.1
+python-dotenv==1.1.0
+
+# ML Core (minimal)
+transformers==4.52.4
+scikit-learn==1.7.0
+
+# Data Validation
+pydantic==2.11.7
+pydantic-settings==2.10.0
+
+# Logging
+loguru==0.7.3
+
+# Code Style & Pre-Commit
+black==25.1.0
+pre-commit==4.2.0
