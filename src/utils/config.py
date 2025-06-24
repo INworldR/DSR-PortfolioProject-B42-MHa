@@ -4,6 +4,7 @@ Loads settings from environment variables using pydantic-settings.
 """
 
 from typing import Optional
+from pathlib import Path
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 from pydantic import Field
@@ -13,6 +14,11 @@ load_dotenv()
 
 
 class Config(BaseSettings):
+    # Data Paths
+    DATA_DIR: str = Field(default="data")
+    RAW_DIR: str = Field(default="data/raw")
+    PROCESSED_DIR: str = Field(default="data/processed")
+
     # ChromaDB
     CHROMADB_HOST: str = Field(default="localhost")
     CHROMADB_PORT: int = Field(default=8000)
@@ -41,6 +47,15 @@ class Config(BaseSettings):
     class Config:
         env_file = ".env"
         extra = "ignore"
+
+    def get_data_path(self) -> Path:
+        return Path(self.DATA_DIR)
+
+    def get_raw_path(self) -> Path:
+        return Path(self.RAW_DIR)
+
+    def get_processed_path(self) -> Path:
+        return Path(self.PROCESSED_DIR)
 
     def chromadb_url(self) -> str:
         return self.CHROMADB_URL or f"http://{self.CHROMADB_HOST}:{self.CHROMADB_PORT}"
@@ -75,6 +90,18 @@ def reload_config() -> Config:
     return config
 
 
+def get_data_path() -> Path:
+    return config.get_data_path()
+
+
+def get_raw_path() -> Path:
+    return config.get_raw_path()
+
+
+def get_processed_path() -> Path:
+    return config.get_processed_path()
+
+
 def get_chromadb_url() -> str:
     return config.chromadb_url()
 
@@ -89,6 +116,9 @@ def get_streamlit_url() -> str:
 
 if __name__ == "__main__":
     print("=== Configuration Test ===")
+    print(f"Data Path: {get_data_path()}")
+    print(f"Raw Path: {get_raw_path()}")
+    print(f"Processed Path: {get_processed_path()}")
     print(f"ChromaDB URL: {get_chromadb_url()}")
     print(f"Ollama URL: {get_ollama_url()}")
     print(f"Streamlit URL: {get_streamlit_url()}")
