@@ -25,6 +25,12 @@ pydantic-settings==2.10.0
 # Logging
 loguru==0.7.3
 
+# Documentation
+sphinx>=7.0.0
+sphinx-rtd-theme>=1.3.0
+myst-parser>=2.0.0
+sphinx-autodoc-typehints>=1.24.0
+
 # Code Style & Pre-Commit
 black==25.1.0
 pre-commit==4.2.0

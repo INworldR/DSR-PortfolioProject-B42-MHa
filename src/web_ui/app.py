@@ -6,6 +6,10 @@ Streamlit web interface for the RAG system.
 import streamlit as st
 import sys
 import os
+import warnings
+
+# Suppress all warnings
+warnings.filterwarnings("ignore")
 
 # Add src to path for imports
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))

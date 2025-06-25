@@ -1,15 +1,16 @@
 # Project Structure Overview
 
-This document provides a detailed explanation of the RAG-Enhanced Cybersecurity Classification System project structure.
+This document provides a detailed explanation of the DSR Cybersecurity RAG System project structure.
 
 ## 📁 Root Directory
 
 ```
 DSR-PortfolioProject-B42-MHa/
 ├── .venv/                  # Python virtual environment (not in git)
+├── CHANGELOG.md            # Version history and changes
 ├── data/                   # All data storage and processing directories
 ├── deployment/             # Deployment configurations and scripts
-├── docs/                   # Project documentation
+├── docs/                   # Sphinx documentation
 ├── env.example             # Environment variables template
 ├── LICENSE                 # Project license
 ├── logs/                   # Application and service logs
@@ -17,7 +18,7 @@ DSR-PortfolioProject-B42-MHa/
 ├── outputs/                # Generated outputs, reports, and results
 ├── PROJECT_STRUCTURE.md    # This file - detailed structure explanation
 ├── README.md               # Main project documentation
-├── requirements-minimal.txt # Minimal Python dependencies
+├── requirements.txt        # Python dependencies
 ├── src/                    # Main source code directory
 └── tests/                  # Unit tests and test data
 ```
@@ -30,8 +31,12 @@ All data-related directories for raw, processed, and vector data.
 data/
 ├── chromadb/               # ChromaDB vector database files
 ├── mitre/                  # MITRE ATT&CK framework data and mappings
-├── processed/              # Cleaned and processed log data
-└── raw/                    # Original firewall and Apache log files
+├── processed/              # Cleaned and processed data
+└── raw/                    # Downloaded cybersecurity datasets
+    ├── heimdall/           # Heimdall conversation dataset
+    ├── ttp_mapping/        # TTP mapping dataset
+    ├── security_attacks/   # Security attacks dataset
+    └── cyber_rules/        # Cyber rules dataset
 ```
 
 ### `logs/`
@@ -54,13 +59,21 @@ deployment/
 ```
 
 ### `docs/`
-Project documentation and technical specifications.
+Sphinx documentation with ReadTheDocs theme.
 ```
 docs/
+├── _build/                 # Generated HTML documentation
 ├── api/                    # API documentation
-├── architecture/           # System architecture diagrams
-├── user-guide/             # User documentation
-└── technical/              # Technical specifications
+│   ├── config.rst         # Configuration API
+│   ├── datasets.rst       # Dataset management API
+│   └── modules.rst        # Module reference
+├── user_guide/            # User documentation
+│   ├── installation.rst   # Installation guide
+│   ├── quickstart.rst     # Quick start guide
+│   └── datasets.rst       # Dataset documentation
+├── conf.py                # Sphinx configuration
+├── index.rst              # Main documentation page
+└── Makefile               # Documentation build commands
 ```
 
 ### `notebooks/`
@@ -86,21 +99,16 @@ outputs/
 Main source code directory containing all application logic.
 ```
 src/
-├── data/                   # Data processing and ingestion modules
+├── 01_get_datasets.py      # Dataset download functionality
+├── 02_preview_datasets.py  # Dataset preview and inspection
 ├── models/                 # Machine learning models and utilities
 ├── rag/                    # RAG (Retrieval-Augmented Generation) engine
 ├── utils/                  # Utility functions and helpers
+│   ├── chromadb_client.py  # ChromaDB connection and operations
+│   ├── config.py           # Configuration management
+│   ├── logger.py           # Logging utility
+│   └── ollama_client.py    # Ollama LLM client
 └── web_ui/                 # Streamlit web interface
-```
-
-#### `src/data/`
-Data processing, ingestion, and transformation modules.
-```
-src/data/
-├── ingestion/              # Log ingestion from various sources
-├── preprocessing/          # Data cleaning and preprocessing
-├── validation/             # Data validation and quality checks
-└── storage/                # Data storage and retrieval utilities
 ```
 
 #### `src/models/`
@@ -127,9 +135,9 @@ Utility functions and helper modules.
 ```
 src/utils/
 ├── chromadb_client.py      # ChromaDB connection and operations
-├── config.py               # Configuration management (loads from .env)
-├── ollama_client.py        # Ollama LLM client
-└── logging.py              # Logging configuration
+├── config.py               # Configuration management with Pydantic
+├── logger.py               # Centralized logging utility
+└── ollama_client.py        # Ollama LLM client
 ```
 
 #### `src/web_ui/`
@@ -155,38 +163,74 @@ tests/
 ## 🔧 Key Files
 
 ### Configuration Files
-- `env.example`: Template for environment variables (ChromaDB, Ollama, etc.)
-- `requirements-minimal.txt`: Minimal Python dependencies for RAG demo
+- `env.example`: Template for environment variables
+- `requirements.txt`: Python dependencies including documentation tools
 - `.env`: Environment variables with real settings (not in git)
+- `CHANGELOG.md`: Version history and changes
 
 ### Main Application Files
-- `src/rag/engine.py`: Core RAG engine
-- `src/web_ui/app.py`: Streamlit web interface
-- `src/utils/config.py`: Configuration management (loads from .env)
+- `src/01_get_datasets.py`: Dataset download functionality
+- `src/02_preview_datasets.py`: Dataset preview functionality
+- `src/utils/config.py`: Configuration management with Pydantic
+- `src/utils/logger.py`: Centralized logging utility
 - `src/utils/ollama_client.py`: Ollama LLM client
 - `src/utils/chromadb_client.py`: ChromaDB client
 
 ### Documentation
 - `README.md`: Main project overview and quick start
 - `PROJECT_STRUCTURE.md`: This file - detailed structure explanation
-- `docs/`: Additional documentation
+- `docs/`: Sphinx documentation with ReadTheDocs theme
+- `CHANGELOG.md`: Version history and changes
 
 ## 🚀 Development Workflow
 
 1. **Setup**: `env.example` → `.env` → `source .venv/bin/activate`
-2. **Data Processing**: Raw logs → `data/raw/` → `src/data/` → `data/processed/`
-3. **Model Development**: `notebooks/` → `src/models/` → `tests/`
-4. **RAG Engine**: `src/rag/` → `src/utils/` → `outputs/`
-5. **Web Interface**: `src/web_ui/` → Streamlit application
-6. **Deployment**: `deployment/` → Production environment
+2. **Dataset Management**: `src/01_get_datasets.py` → `data/raw/`
+3. **Data Inspection**: `src/02_preview_datasets.py` → Dataset analysis
+4. **Model Development**: `notebooks/` → `src/models/` → `tests/`
+5. **RAG Engine**: `src/rag/` → `src/utils/` → `outputs/`
+6. **Web Interface**: `src/web_ui/` → Streamlit application
+7. **Documentation**: `docs/` → `make html` → Generated documentation
+8. **Deployment**: `deployment/` → Production environment
+
+## 📊 Dataset Management
+
+The system supports 4 key cybersecurity datasets:
+
+1. **Heimdall** (`AlicanKiraz0/Cybersecurity-Dataset-Heimdall-v1.1`)
+   - Conversation dataset for training
+   - ~26MB, 21,257 examples
+
+2. **TTP Mapping** (`tumeteor/Security-TTP-Mapping`)
+   - MITRE ATT&CK technique relationships
+   - ~2MB, 20,736 examples
+
+3. **Security Attacks** (`dattaraj/security-attacks-MITRE`)
+   - Attack pattern examples
+   - ~150KB, 271 examples
+
+4. **Cyber Rules** (`jcordon5/cybersecurity-rules`)
+   - Detection rules and signatures
+   - ~4MB, 949 examples
+
+## 🔧 Configuration
+
+The system uses centralized configuration with Pydantic:
+
+- **Data Paths**: `data/`, `data/raw/`, `data/processed/`
+- **Services**: ChromaDB (localhost:8000), Ollama (localhost:11434)
+- **Web Interface**: Streamlit (localhost:8501)
+- **Logging**: Configurable levels and formats
 
 ## 📝 Notes
 
-- **Virtual Environment**: `.venv/` contains the Python virtual environment and should not be committed
-- **Configuration**: All settings are managed via `.env` file (copy from `env.example`)
-- **Dependencies**: Only minimal requirements in `requirements-minimal.txt` (no PyTorch/CUDA)
-- **Logs**: Application logs are stored in `logs/` directory by component (not committed to git)
+- **Virtual Environment**: `.venv/` contains the Python virtual environment
+- **Configuration**: All settings managed via `src/utils/config.py` and `.env`
+- **Dependencies**: Comprehensive requirements in `requirements.txt`
+- **Logs**: Application logs stored in `logs/` directory by component
 - **Outputs**: All generated outputs go to the `outputs/` directory
-- **Testing**: Test data and fixtures are stored in `tests/data/`
-- **Documentation**: Organized in the `docs/` directory with subdirectories for different types
-- **Security**: No real IPs or model names in committed files - only placeholders in examples
+- **Testing**: Test data and fixtures stored in `tests/data/`
+- **Documentation**: Sphinx documentation in `docs/` with ReadTheDocs theme
+- **Dataset Caching**: Automatic caching in Parquet format for efficiency
+- **Type Hints**: Full type annotation for better IDE support
+- **Error Handling**: Comprehensive error handling with logging

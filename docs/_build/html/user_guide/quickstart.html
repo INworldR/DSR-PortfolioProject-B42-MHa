@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Start Guide &mdash; DSR Cybersecurity RAG System 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Datasets Documentation" href="datasets.html" />
+    <link rel="prev" title="Installation Guide" href="installation.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+          <a href="../index.html" class="icon icon-home">
+            DSR Cybersecurity RAG System
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-download-datasets">Step 1: Download Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-preview-data">Step 2: Preview Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-start-services">Step 3: Start Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-launch-web-interface">Step 4: Launch Web Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-system">Using the System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-queries">Example Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datasets.html">Datasets API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSR Cybersecurity RAG System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick Start Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user_guide/quickstart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <section id="quick-start-guide">
+<h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Link to this heading"></a></h1>
+<p>Get up and running with the DSR Cybersecurity RAG System in minutes.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Ensure you have completed the <a class="reference internal" href="installation.html"><span class="doc">Installation Guide</span></a> guide and have:</p>
+<ul class="simple">
+<li><p>Python environment activated</p></li>
+<li><p>Dependencies installed</p></li>
+<li><p>Basic understanding of cybersecurity concepts</p></li>
+</ul>
+</section>
+<section id="step-1-download-datasets">
+<h2>Step 1: Download Datasets<a class="headerlink" href="#step-1-download-datasets" title="Link to this heading"></a></h2>
+<p>Download the required cybersecurity datasets:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/01_get_datasets.py
+</pre></div>
+</div>
+<p>This will download:</p>
+<ul class="simple">
+<li><p><strong>Heimdall</strong>: Cybersecurity conversation dataset</p></li>
+<li><p><strong>TTP Mapping</strong>: MITRE ATT&amp;CK technique mapping</p></li>
+<li><p><strong>Security Attacks</strong>: MITRE attack patterns</p></li>
+<li><p><strong>Cyber Rules</strong>: Detection rules and signatures</p></li>
+</ul>
+</section>
+<section id="step-2-preview-data">
+<h2>Step 2: Preview Data<a class="headerlink" href="#step-2-preview-data" title="Link to this heading"></a></h2>
+<p>Inspect the downloaded datasets:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/02_preview_datasets.py
+</pre></div>
+</div>
+<p>This shows:
+* Dataset shapes and column information
+* Sample data for each dataset
+* File locations and sizes</p>
+</section>
+<section id="step-3-start-services">
+<h2>Step 3: Start Services<a class="headerlink" href="#step-3-start-services" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p><strong>Start ChromaDB</strong> (if not running):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chroma<span class="w"> </span>run<span class="w"> </span>--host<span class="w"> </span>localhost<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Start Ollama</strong> (if not running):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ollama<span class="w"> </span>serve
+</pre></div>
+</div>
+</li>
+<li><p><strong>Pull LLM Model</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ollama<span class="w"> </span>pull<span class="w"> </span>llama3.1:8b
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="step-4-launch-web-interface">
+<h2>Step 4: Launch Web Interface<a class="headerlink" href="#step-4-launch-web-interface" title="Link to this heading"></a></h2>
+<p>Start the Streamlit web interface:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit<span class="w"> </span>run<span class="w"> </span>src/web_ui/app.py
+</pre></div>
+</div>
+<p>Navigate to <cite>http://localhost:8501</cite> in your browser.</p>
+</section>
+<section id="using-the-system">
+<h2>Using the System<a class="headerlink" href="#using-the-system" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Upload Documents</strong>: Add cybersecurity reports or logs</p></li>
+<li><p><strong>Ask Questions</strong>: Query the system about threats, techniques, or incidents</p></li>
+<li><p><strong>Get Insights</strong>: Receive AI-powered analysis with MITRE ATT&amp;CK context</p></li>
+</ol>
+</section>
+<section id="example-queries">
+<h2>Example Queries<a class="headerlink" href="#example-queries" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>“What are the common TTPs used in ransomware attacks?”</p></li>
+<li><p>“How do I detect lateral movement in my network?”</p></li>
+<li><p>“What indicators should I look for in a phishing campaign?”</p></li>
+</ul>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Read the <a class="reference internal" href="datasets.html"><span class="doc">Datasets Documentation</span></a> guide for detailed dataset information</p></li>
+<li><p>Explore the <a class="reference internal" href="../api/modules.html"><span class="doc">API Reference</span></a> for API documentation</p></li>
+<li><p>Check the configuration options in <a class="reference internal" href="../api/config.html"><span class="doc">Configuration</span></a></p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p><strong>Common Issues:</strong></p>
+<ul class="simple">
+<li><p><strong>Dataset Download Fails</strong>: Check internet connection and Hugging Face access</p></li>
+<li><p><strong>ChromaDB Connection Error</strong>: Ensure ChromaDB is running on port 8000</p></li>
+<li><p><strong>Ollama Model Not Found</strong>: Run <cite>ollama pull llama3.1:8b</cite></p></li>
+<li><p><strong>Streamlit Port Conflict</strong>: Change port in configuration or kill existing process</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datasets.html" class="btn btn-neutral float-right" title="Datasets Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, DSR Portfolio Project Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>

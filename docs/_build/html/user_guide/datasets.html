@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datasets Documentation &mdash; DSR Cybersecurity RAG System 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Reference" href="../api/modules.html" />
+    <link rel="prev" title="Quick Start Guide" href="quickstart.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+          <a href="../index.html" class="icon icon-home">
+            DSR Cybersecurity RAG System
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Datasets Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#heimdall-dataset">Heimdall Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ttp-mapping-dataset">TTP Mapping Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security-attacks-dataset">Security Attacks Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cyber-rules-dataset">Cyber Rules Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-processing">Data Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-structure">File Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-quality">Data Quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#privacy-and-security">Privacy and Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/datasets.html">Datasets API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSR Cybersecurity RAG System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Datasets Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user_guide/datasets.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <section id="datasets-documentation">
+<h1>Datasets Documentation<a class="headerlink" href="#datasets-documentation" title="Link to this heading"></a></h1>
+<p>This document describes the cybersecurity datasets used in the DSR RAG System.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The system uses four primary datasets from Hugging Face Hub, each providing different aspects of cybersecurity knowledge:</p>
+<ul class="simple">
+<li><p><strong>Heimdall</strong>: Conversation dataset for training</p></li>
+<li><p><strong>TTP Mapping</strong>: MITRE ATT&amp;CK technique relationships</p></li>
+<li><p><strong>Security Attacks</strong>: Attack pattern examples</p></li>
+<li><p><strong>Cyber Rules</strong>: Detection and response rules</p></li>
+</ul>
+</section>
+<section id="heimdall-dataset">
+<h2>Heimdall Dataset<a class="headerlink" href="#heimdall-dataset" title="Link to this heading"></a></h2>
+<p><strong>Source</strong>: <cite>AlicanKiraz0/Cybersecurity-Dataset-Heimdall-v1.1</cite></p>
+<p><strong>Description</strong>: A comprehensive dataset of cybersecurity conversations and Q&amp;A pairs, designed for training AI models on security-related topics.</p>
+<p><strong>Structure</strong>:
+* <strong>conversations</strong>: List of conversation turns
+* <strong>id</strong>: Unique identifier
+* <strong>metadata</strong>: Source and category information</p>
+<p><strong>Use Case</strong>: Training the RAG system to understand security queries and provide contextual responses.</p>
+<p><strong>Size</strong>: ~26MB (21,257 examples)</p>
+</section>
+<section id="ttp-mapping-dataset">
+<h2>TTP Mapping Dataset<a class="headerlink" href="#ttp-mapping-dataset" title="Link to this heading"></a></h2>
+<p><strong>Source</strong>: <cite>tumeteor/Security-TTP-Mapping</cite></p>
+<p><strong>Description</strong>: Maps MITRE ATT&amp;CK techniques to their relationships, helping understand technique similarities and associations.</p>
+<p><strong>Structure</strong>:
+* <strong>train/validation/test</strong> splits
+* Technique identifiers and descriptions
+* Similarity scores and relationships</p>
+<p><strong>Use Case</strong>: Understanding technique relationships and improving threat classification accuracy.</p>
+<p><strong>Size</strong>: ~2MB (20,736 examples across splits)</p>
+</section>
+<section id="security-attacks-dataset">
+<h2>Security Attacks Dataset<a class="headerlink" href="#security-attacks-dataset" title="Link to this heading"></a></h2>
+<p><strong>Source</strong>: <cite>dattaraj/security-attacks-MITRE</cite></p>
+<p><strong>Description</strong>: Collection of security attack patterns mapped to MITRE ATT&amp;CK framework, providing real-world attack examples.</p>
+<p><strong>Structure</strong>:
+* <strong>train/validation</strong> splits
+* Attack descriptions and techniques
+* MITRE ATT&amp;CK mappings</p>
+<p><strong>Use Case</strong>: Providing concrete examples of attacks and their associated techniques.</p>
+<p><strong>Size</strong>: ~150KB (271 examples across splits)</p>
+</section>
+<section id="cyber-rules-dataset">
+<h2>Cyber Rules Dataset<a class="headerlink" href="#cyber-rules-dataset" title="Link to this heading"></a></h2>
+<p><strong>Source</strong>: <cite>jcordon5/cybersecurity-rules</cite></p>
+<p><strong>Description</strong>: Detection rules and signatures for identifying security threats and incidents.</p>
+<p><strong>Structure</strong>:
+* <strong>train</strong> split
+* Rule definitions and conditions
+* Detection logic and thresholds</p>
+<p><strong>Use Case</strong>: Enhancing detection capabilities and providing rule-based insights.</p>
+<p><strong>Size</strong>: ~4MB (949 examples)</p>
+</section>
+<section id="data-processing">
+<h2>Data Processing<a class="headerlink" href="#data-processing" title="Link to this heading"></a></h2>
+<p>All datasets are automatically:</p>
+<ol class="arabic simple">
+<li><p><strong>Downloaded</strong> from Hugging Face Hub</p></li>
+<li><p><strong>Converted</strong> to Parquet format for efficiency</p></li>
+<li><p><strong>Organized</strong> in <cite>data/raw/</cite> subdirectories</p></li>
+<li><p><strong>Cached</strong> to avoid re-downloading</p></li>
+</ol>
+</section>
+<section id="file-structure">
+<h2>File Structure<a class="headerlink" href="#file-structure" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>data/raw/
+├── heimdall/
+│   └── heimdall_train.parquet
+├── ttp_mapping/
+│   ├── ttp_mapping_train.parquet
+│   ├── ttp_mapping_validation.parquet
+│   └── ttp_mapping_test.parquet
+├── security_attacks/
+│   ├── security_attacks_train.parquet
+│   └── security_attacks_validation.parquet
+└── cyber_rules/
+    └── cyber_rules_train.parquet
+</pre></div>
+</div>
+</section>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h2>
+<p><strong>Download Datasets</strong>:
+.. code-block:: python</p>
+<blockquote>
+<div><p>from src.data.get_datasets import download_dataset</p>
+<p>download_dataset(‘heimdall’, ‘AlicanKiraz0/Cybersecurity-Dataset-Heimdall-v1.1’, ‘heimdall’)</p>
+</div></blockquote>
+<p><strong>Preview Data</strong>:
+.. code-block:: python</p>
+<blockquote>
+<div><p>import pandas as pd
+df = pd.read_parquet(‘data/raw/heimdall/heimdall_train.parquet’)
+print(df.head())</p>
+</div></blockquote>
+<p><strong>Check Dataset Info</strong>:
+.. code-block:: bash</p>
+<blockquote>
+<div><p>python src/02_preview_datasets.py</p>
+</div></blockquote>
+</section>
+<section id="data-quality">
+<h2>Data Quality<a class="headerlink" href="#data-quality" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Source</strong>: All datasets are from reputable sources on Hugging Face Hub</p></li>
+<li><p><strong>Format</strong>: Standardized Parquet format for fast access</p></li>
+<li><p><strong>Validation</strong>: Automatic format checking and error handling</p></li>
+<li><p><strong>Updates</strong>: Datasets can be re-downloaded to get latest versions</p></li>
+</ul>
+</section>
+<section id="privacy-and-security">
+<h2>Privacy and Security<a class="headerlink" href="#privacy-and-security" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>No PII</strong>: Datasets contain no personally identifiable information</p></li>
+<li><p><strong>Public Data</strong>: All data is publicly available on Hugging Face Hub</p></li>
+<li><p><strong>Local Storage</strong>: Data is stored locally in <cite>data/raw/</cite> directory</p></li>
+<li><p><strong>No External Calls</strong>: Once downloaded, no internet connection required</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p><strong>Common Issues</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Download Failures</strong>: Check internet connection and Hugging Face access</p></li>
+<li><p><strong>Disk Space</strong>: Ensure sufficient space for ~35MB total dataset size</p></li>
+<li><p><strong>Permission Errors</strong>: Check write permissions for <cite>data/</cite> directory</p></li>
+<li><p><strong>Corrupted Files</strong>: Delete and re-download using <cite>python src/01_get_datasets.py</cite></p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api/modules.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, DSR Portfolio Project Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>

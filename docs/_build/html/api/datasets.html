@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datasets API &mdash; DSR Cybersecurity RAG System 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Configuration" href="config.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+          <a href="../index.html" class="icon icon-home">
+            DSR Cybersecurity RAG System
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/datasets.html">Datasets Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Datasets API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-download-functions">Dataset Download Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-preview-functions">Dataset Preview Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-information">Dataset Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-considerations">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DSR Cybersecurity RAG System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Datasets API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/datasets.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <section id="datasets-api">
+<h1>Datasets API<a class="headerlink" href="#datasets-api" title="Link to this heading"></a></h1>
+<p>This section documents the dataset management API for downloading and processing cybersecurity datasets.</p>
+<section id="dataset-download-functions">
+<h2>Dataset Download Functions<a class="headerlink" href="#dataset-download-functions" title="Link to this heading"></a></h2>
+</section>
+<section id="dataset-preview-functions">
+<h2>Dataset Preview Functions<a class="headerlink" href="#dataset-preview-functions" title="Link to this heading"></a></h2>
+</section>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h2>
+<p><strong>Download a Single Dataset</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.data.get_datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_dataset</span>
+
+<span class="c1"># Download Heimdall dataset</span>
+<span class="n">download_dataset</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;heimdall&#39;</span><span class="p">,</span>
+    <span class="n">dataset_id</span><span class="o">=</span><span class="s1">&#39;AlicanKiraz0/Cybersecurity-Dataset-Heimdall-v1.1&#39;</span><span class="p">,</span>
+    <span class="n">folder_name</span><span class="o">=</span><span class="s1">&#39;heimdall&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Download All Datasets</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the main script</span>
+<span class="n">python</span> <span class="n">src</span><span class="o">/</span><span class="mi">01</span><span class="n">_get_datasets</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p><strong>Preview Datasets</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the preview script</span>
+<span class="n">python</span> <span class="n">src</span><span class="o">/</span><span class="mi">02</span><span class="n">_preview_datasets</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p><strong>Programmatic Preview</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_raw_path</span>
+
+<span class="c1"># Load and preview a specific dataset</span>
+<span class="n">raw_path</span> <span class="o">=</span> <span class="n">get_raw_path</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">raw_path</span> <span class="o">/</span> <span class="s1">&#39;heimdall&#39;</span> <span class="o">/</span> <span class="s1">&#39;heimdall_train.parquet&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="dataset-information">
+<h2>Dataset Information<a class="headerlink" href="#dataset-information" title="Link to this heading"></a></h2>
+<p><strong>Supported Datasets</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Heimdall</strong> (<cite>heimdall</cite>)
+* Source: <cite>AlicanKiraz0/Cybersecurity-Dataset-Heimdall-v1.1</cite>
+* Type: Conversation dataset
+* Size: ~26MB</p></li>
+<li><p><strong>TTP Mapping</strong> (<cite>ttp_mapping</cite>)
+* Source: <cite>tumeteor/Security-TTP-Mapping</cite>
+* Type: Technique mapping
+* Size: ~2MB</p></li>
+<li><p><strong>Security Attacks</strong> (<cite>security_attacks</cite>)
+* Source: <cite>dattaraj/security-attacks-MITRE</cite>
+* Type: Attack patterns
+* Size: ~150KB</p></li>
+<li><p><strong>Cyber Rules</strong> (<cite>cyber_rules</cite>)
+* Source: <cite>jcordon5/cybersecurity-rules</cite>
+* Type: Detection rules
+* Size: ~4MB</p></li>
+</ol>
+<p><strong>File Structure</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>data/raw/
+├── heimdall/
+│   └── heimdall_train.parquet
+├── ttp_mapping/
+│   ├── ttp_mapping_train.parquet
+│   ├── ttp_mapping_validation.parquet
+│   └── ttp_mapping_test.parquet
+├── security_attacks/
+│   ├── security_attacks_train.parquet
+│   └── security_attacks_validation.parquet
+└── cyber_rules/
+    └── cyber_rules_train.parquet
+</pre></div>
+</div>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>
+<p>The dataset functions include comprehensive error handling:</p>
+<ul class="simple">
+<li><p><strong>Network Errors</strong>: Automatic retry and clear error messages</p></li>
+<li><p><strong>Disk Space</strong>: Validation before download</p></li>
+<li><p><strong>Corrupted Files</strong>: Detection and re-download capability</p></li>
+<li><p><strong>Permission Issues</strong>: Clear error messages for file system problems</p></li>
+</ul>
+<p><strong>Example Error Handling</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">download_dataset</span><span class="p">(</span><span class="s1">&#39;heimdall&#39;</span><span class="p">,</span> <span class="s1">&#39;invalid/dataset&#39;</span><span class="p">,</span> <span class="s1">&#39;heimdall&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Download failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Handle error appropriately</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Dataset paths are configured through the central configuration system:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_raw_path</span><span class="p">,</span> <span class="n">get_data_path</span>
+
+<span class="n">raw_path</span> <span class="o">=</span> <span class="n">get_raw_path</span><span class="p">()</span>  <span class="c1"># data/raw</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">get_data_path</span><span class="p">()</span>  <span class="c1"># data</span>
+</pre></div>
+</div>
+</section>
+<section id="performance-considerations">
+<h2>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Caching</strong>: Datasets are cached locally after first download</p></li>
+<li><p><strong>Format</strong>: Parquet format for fast reading and writing</p></li>
+<li><p><strong>Compression</strong>: Automatic compression for disk space efficiency</p></li>
+<li><p><strong>Validation</strong>: Automatic format validation on download</p></li>
+</ul>
+<p><strong>Performance Tips</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>SSD Storage</strong>: Use SSD for faster dataset access</p></li>
+<li><p><strong>Sufficient RAM</strong>: Ensure enough memory for large datasets</p></li>
+<li><p><strong>Network</strong>: Stable internet connection for initial downloads</p></li>
+<li><p><strong>Disk Space</strong>: ~35MB total space required</p></li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p><strong>Common Issues and Solutions</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Download Timeout</strong>:
+* Check internet connection
+* Increase timeout in configuration
+* Use VPN if needed</p></li>
+<li><p><strong>Disk Space Errors</strong>:
+* Free up space in data directory
+* Check available disk space
+* Clean up old datasets</p></li>
+<li><p><strong>Permission Errors</strong>:
+* Check write permissions for data directory
+* Run with appropriate user privileges
+* Verify directory ownership</p></li>
+<li><p><strong>Corrupted Downloads</strong>:
+* Delete corrupted files
+* Re-run download script
+* Check file integrity</p></li>
+</ol>
+<p><strong>Debug Mode</strong>:</p>
+<p>Enable debug logging for detailed information:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="c1"># Run download with debug output</span>
+<span class="n">download_dataset</span><span class="p">(</span><span class="s1">&#39;heimdall&#39;</span><span class="p">,</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span> <span class="s1">&#39;heimdall&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="config.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, DSR Portfolio Project Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>
