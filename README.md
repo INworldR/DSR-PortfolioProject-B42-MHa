@@ -1,11 +1,11 @@
 # DSR Cybersecurity RAG System
 
-Advanced context-aware threat detection using RAG (Retrieval-Augmented Generation) + Ollama LLM for MITRE ATT&CK classification.
+Advanced context-aware threat detection using RAG (Retrieval-Augmented Generation) + LLM for MITRE ATT&CK classification.
 
 ## 🎯 Project Goals
 
 - **Automated Dataset Management**: Download and process cybersecurity datasets from Hugging Face Hub
-- **RAG Pipeline**: Context-aware threat analysis using ChromaDB and Ollama
+- **RAG Pipeline**: Context-aware threat analysis using ChromaDB and LLM
 - **MITRE ATT&CK Integration**: Precise technique classification and mapping
 - **Professional Documentation**: Complete Sphinx documentation with ReadTheDocs theme
 - **Modular Architecture**: Clean, maintainable codebase with type hints and error handling
@@ -72,7 +72,7 @@ The system automatically downloads and manages 4 key cybersecurity datasets:
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Streamlit UI  │───▶│   RAG Engine    │───▶│  ChromaDB +     │
-│                 │    │                 │    │  Ollama LLM     │
+│                 │    │                 │    │  LLM     │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          ▼                       ▼                       ▼
@@ -186,4 +186,4 @@ See [CHANGELOG.md](CHANGELOG.md) for detailed version history and changes.
 
 ---
 
-*Advanced RAG + Ollama + Streamlit for Cybersecurity Classification with Professional Documentation*
+*Advanced RAG + LLM + Streamlit for Cybersecurity Classification with Professional Documentation*
