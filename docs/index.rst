@@ -30,7 +30,7 @@ Features
 --------
 
 * **Dataset Management**: Automated download and processing of cybersecurity datasets
-* **RAG Pipeline**: ChromaDB vector database with Ollama LLM integration
+* **RAG Pipeline**: ChromaDB vector database with LLM LLM integration
 * **MITRE ATT&CK**: Specialized for cybersecurity threat classification
 * **Web Interface**: Streamlit-based user interface
 * **Modular Architecture**: Clean, maintainable codebase

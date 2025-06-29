@@ -1,24 +1,13 @@
-API Reference
-=============
+src
+===
 
-This section contains the complete API documentation for the DSR Cybersecurity RAG System.
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: src.utils.config
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: src.utils.logger
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: src.data.get_datasets
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-.. automodule:: src.data.preview_datasets
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   01_get_datasets
+   02_preview_datasets
+   03_load_datasets
+   04_build_chromadb
+   05_log_labeling
+   src.utils
+   src.web_ui

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; DSR Cybersecurity RAG System 1.0.0 documentation</title>
+  <title>src &mdash; DSR Cybersecurity RAG System 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Configuration" href="config.html" />
+    <link rel="next" title="01_get_datasets module" href="01_get_datasets.html" />
     <link rel="prev" title="Datasets Documentation" href="../user_guide/datasets.html" />
 </head>
 
@@ -47,57 +47,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/installation.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/quickstart.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/datasets.html">Datasets Documentation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.DATA_DIR"><code class="docutils literal notranslate"><span class="pre">Config.DATA_DIR</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.RAW_DIR"><code class="docutils literal notranslate"><span class="pre">Config.RAW_DIR</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.PROCESSED_DIR"><code class="docutils literal notranslate"><span class="pre">Config.PROCESSED_DIR</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.CHROMADB_HOST"><code class="docutils literal notranslate"><span class="pre">Config.CHROMADB_HOST</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.CHROMADB_PORT"><code class="docutils literal notranslate"><span class="pre">Config.CHROMADB_PORT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.CHROMADB_URL"><code class="docutils literal notranslate"><span class="pre">Config.CHROMADB_URL</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.OLLAMA_HOST"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_HOST</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.OLLAMA_PORT"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_PORT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.OLLAMA_URL"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_URL</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.OLLAMA_DEFAULT_MODEL"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_DEFAULT_MODEL</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.OLLAMA_FALLBACK_MODEL"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_FALLBACK_MODEL</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.OLLAMA_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_TIMEOUT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.OLLAMA_MAX_TOKENS"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_MAX_TOKENS</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.OLLAMA_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_TEMPERATURE</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.STREAMLIT_HOST"><code class="docutils literal notranslate"><span class="pre">Config.STREAMLIT_HOST</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.STREAMLIT_PORT"><code class="docutils literal notranslate"><span class="pre">Config.STREAMLIT_PORT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.STREAMLIT_URL"><code class="docutils literal notranslate"><span class="pre">Config.STREAMLIT_URL</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Config.LOG_LEVEL</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.DEBUG_MODE"><code class="docutils literal notranslate"><span class="pre">Config.DEBUG_MODE</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.ENVIRONMENT"><code class="docutils literal notranslate"><span class="pre">Config.ENVIRONMENT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config.Config</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#src.utils.config.Config.Config.env_file"><code class="docutils literal notranslate"><span class="pre">Config.Config.env_file</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#src.utils.config.Config.Config.extra"><code class="docutils literal notranslate"><span class="pre">Config.Config.extra</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_get_datasets.html">01_get_datasets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_preview_datasets.html">02_preview_datasets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_load_datasets.html">03_load_datasets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_build_chromadb.html">04_build_chromadb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_log_labeling.html">05_log_labeling module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html">src.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.web_ui.html">src.web_ui package</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.get_data_path"><code class="docutils literal notranslate"><span class="pre">Config.get_data_path()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.get_raw_path"><code class="docutils literal notranslate"><span class="pre">Config.get_raw_path()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.get_processed_path"><code class="docutils literal notranslate"><span class="pre">Config.get_processed_path()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.chromadb_url"><code class="docutils literal notranslate"><span class="pre">Config.chromadb_url()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.ollama_url"><code class="docutils literal notranslate"><span class="pre">Config.ollama_url()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.streamlit_url"><code class="docutils literal notranslate"><span class="pre">Config.streamlit_url()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.is_development"><code class="docutils literal notranslate"><span class="pre">Config.is_development()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.is_debug"><code class="docutils literal notranslate"><span class="pre">Config.is_debug()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.utils.config.Config.model_config"><code class="docutils literal notranslate"><span class="pre">Config.model_config</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.get_config"><code class="docutils literal notranslate"><span class="pre">get_config()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.reload_config"><code class="docutils literal notranslate"><span class="pre">reload_config()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.get_data_path"><code class="docutils literal notranslate"><span class="pre">get_data_path()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.get_raw_path"><code class="docutils literal notranslate"><span class="pre">get_raw_path()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.get_processed_path"><code class="docutils literal notranslate"><span class="pre">get_processed_path()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.get_chromadb_url"><code class="docutils literal notranslate"><span class="pre">get_chromadb_url()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.get_ollama_url"><code class="docutils literal notranslate"><span class="pre">get_ollama_url()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.config.get_streamlit_url"><code class="docutils literal notranslate"><span class="pre">get_streamlit_url()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.utils.logger.setup_logger"><code class="docutils literal notranslate"><span class="pre">setup_logger()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets API</a></li>
 </ul>
 
         </div>
@@ -114,7 +73,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">API Reference</li>
+      <li class="breadcrumb-item active">src</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/modules.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -124,305 +83,141 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
 
-  <section id="api-reference">
-<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
-<p>This section contains the complete API documentation for the DSR Cybersecurity RAG System.</p>
-<p id="module-src.utils.config">Configuration management for the RAG Cybersecurity Classification System.
-Loads settings from environment variables using pydantic-settings.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="src.utils.config.Config">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_case_sensitive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_nested_model_default_partial_update</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PosixPath('.')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_file_encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_ignore_empty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_nested_delimiter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_nested_max_split</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_parse_none_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_parse_enums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_prog_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_parse_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_settings_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CliSettingsSource</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_parse_none_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_hide_none_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_avoid_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_enforce_required</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_use_class_docs_for_groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_exit_on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_flag_prefix_char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_implicit_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_ignore_unknown_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_kebab_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_shortcuts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_secrets_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSettings</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.DATA_DIR">
-<span class="sig-name descname"><span class="pre">DATA_DIR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.DATA_DIR" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.RAW_DIR">
-<span class="sig-name descname"><span class="pre">RAW_DIR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.RAW_DIR" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.PROCESSED_DIR">
-<span class="sig-name descname"><span class="pre">PROCESSED_DIR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.PROCESSED_DIR" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.CHROMADB_HOST">
-<span class="sig-name descname"><span class="pre">CHROMADB_HOST</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.CHROMADB_HOST" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.CHROMADB_PORT">
-<span class="sig-name descname"><span class="pre">CHROMADB_PORT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#src.utils.config.Config.CHROMADB_PORT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.CHROMADB_URL">
-<span class="sig-name descname"><span class="pre">CHROMADB_URL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><a class="headerlink" href="#src.utils.config.Config.CHROMADB_URL" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.OLLAMA_HOST">
-<span class="sig-name descname"><span class="pre">OLLAMA_HOST</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.OLLAMA_HOST" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.OLLAMA_PORT">
-<span class="sig-name descname"><span class="pre">OLLAMA_PORT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#src.utils.config.Config.OLLAMA_PORT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.OLLAMA_URL">
-<span class="sig-name descname"><span class="pre">OLLAMA_URL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><a class="headerlink" href="#src.utils.config.Config.OLLAMA_URL" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.OLLAMA_DEFAULT_MODEL">
-<span class="sig-name descname"><span class="pre">OLLAMA_DEFAULT_MODEL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.OLLAMA_DEFAULT_MODEL" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.OLLAMA_FALLBACK_MODEL">
-<span class="sig-name descname"><span class="pre">OLLAMA_FALLBACK_MODEL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.OLLAMA_FALLBACK_MODEL" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.OLLAMA_TIMEOUT">
-<span class="sig-name descname"><span class="pre">OLLAMA_TIMEOUT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#src.utils.config.Config.OLLAMA_TIMEOUT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.OLLAMA_MAX_TOKENS">
-<span class="sig-name descname"><span class="pre">OLLAMA_MAX_TOKENS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#src.utils.config.Config.OLLAMA_MAX_TOKENS" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.OLLAMA_TEMPERATURE">
-<span class="sig-name descname"><span class="pre">OLLAMA_TEMPERATURE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><a class="headerlink" href="#src.utils.config.Config.OLLAMA_TEMPERATURE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.STREAMLIT_HOST">
-<span class="sig-name descname"><span class="pre">STREAMLIT_HOST</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.STREAMLIT_HOST" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.STREAMLIT_PORT">
-<span class="sig-name descname"><span class="pre">STREAMLIT_PORT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#src.utils.config.Config.STREAMLIT_PORT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.STREAMLIT_URL">
-<span class="sig-name descname"><span class="pre">STREAMLIT_URL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><a class="headerlink" href="#src.utils.config.Config.STREAMLIT_URL" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.LOG_LEVEL">
-<span class="sig-name descname"><span class="pre">LOG_LEVEL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.LOG_LEVEL" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.DEBUG_MODE">
-<span class="sig-name descname"><span class="pre">DEBUG_MODE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><a class="headerlink" href="#src.utils.config.Config.DEBUG_MODE" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.ENVIRONMENT">
-<span class="sig-name descname"><span class="pre">ENVIRONMENT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#src.utils.config.Config.ENVIRONMENT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="src.utils.config.Config.Config">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.Config" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.Config.env_file">
-<span class="sig-name descname"><span class="pre">env_file</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.env'</span></em><a class="headerlink" href="#src.utils.config.Config.Config.env_file" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.Config.extra">
-<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ignore'</span></em><a class="headerlink" href="#src.utils.config.Config.Config.extra" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.utils.config.Config.get_data_path">
-<span class="sig-name descname"><span class="pre">get_data_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.get_data_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.get_data_path" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.utils.config.Config.get_raw_path">
-<span class="sig-name descname"><span class="pre">get_raw_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.get_raw_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.get_raw_path" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.utils.config.Config.get_processed_path">
-<span class="sig-name descname"><span class="pre">get_processed_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.get_processed_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.get_processed_path" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.utils.config.Config.chromadb_url">
-<span class="sig-name descname"><span class="pre">chromadb_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.chromadb_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.chromadb_url" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.utils.config.Config.ollama_url">
-<span class="sig-name descname"><span class="pre">ollama_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.ollama_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.ollama_url" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.utils.config.Config.streamlit_url">
-<span class="sig-name descname"><span class="pre">streamlit_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.streamlit_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.streamlit_url" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.utils.config.Config.is_development">
-<span class="sig-name descname"><span class="pre">is_development</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.is_development"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.is_development" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.utils.config.Config.is_debug">
-<span class="sig-name descname"><span class="pre">is_debug</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#Config.is_debug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.Config.is_debug" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.utils.config.Config.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar[SettingsConfigDict]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'arbitrary_types_allowed':</span> <span class="pre">True,</span> <span class="pre">'case_sensitive':</span> <span class="pre">False,</span> <span class="pre">'cli_avoid_json':</span> <span class="pre">False,</span> <span class="pre">'cli_enforce_required':</span> <span class="pre">False,</span> <span class="pre">'cli_exit_on_error':</span> <span class="pre">True,</span> <span class="pre">'cli_flag_prefix_char':</span> <span class="pre">'-',</span> <span class="pre">'cli_hide_none_type':</span> <span class="pre">False,</span> <span class="pre">'cli_ignore_unknown_args':</span> <span class="pre">False,</span> <span class="pre">'cli_implicit_flags':</span> <span class="pre">False,</span> <span class="pre">'cli_kebab_case':</span> <span class="pre">False,</span> <span class="pre">'cli_parse_args':</span> <span class="pre">None,</span> <span class="pre">'cli_parse_none_str':</span> <span class="pre">None,</span> <span class="pre">'cli_prefix':</span> <span class="pre">'',</span> <span class="pre">'cli_prog_name':</span> <span class="pre">None,</span> <span class="pre">'cli_shortcuts':</span> <span class="pre">None,</span> <span class="pre">'cli_use_class_docs_for_groups':</span> <span class="pre">False,</span> <span class="pre">'enable_decoding':</span> <span class="pre">True,</span> <span class="pre">'env_file':</span> <span class="pre">'.env',</span> <span class="pre">'env_file_encoding':</span> <span class="pre">None,</span> <span class="pre">'env_ignore_empty':</span> <span class="pre">False,</span> <span class="pre">'env_nested_delimiter':</span> <span class="pre">None,</span> <span class="pre">'env_nested_max_split':</span> <span class="pre">None,</span> <span class="pre">'env_parse_enums':</span> <span class="pre">None,</span> <span class="pre">'env_parse_none_str':</span> <span class="pre">None,</span> <span class="pre">'env_prefix':</span> <span class="pre">'',</span> <span class="pre">'extra':</span> <span class="pre">'ignore',</span> <span class="pre">'json_file':</span> <span class="pre">None,</span> <span class="pre">'json_file_encoding':</span> <span class="pre">None,</span> <span class="pre">'nested_model_default_partial_update':</span> <span class="pre">False,</span> <span class="pre">'protected_namespaces':</span> <span class="pre">('model_validate',</span> <span class="pre">'model_dump',</span> <span class="pre">'settings_customise_sources'),</span> <span class="pre">'secrets_dir':</span> <span class="pre">None,</span> <span class="pre">'toml_file':</span> <span class="pre">None,</span> <span class="pre">'validate_default':</span> <span class="pre">True,</span> <span class="pre">'yaml_config_section':</span> <span class="pre">None,</span> <span class="pre">'yaml_file':</span> <span class="pre">None,</span> <span class="pre">'yaml_file_encoding':</span> <span class="pre">None}</span></em><a class="headerlink" href="#src.utils.config.Config.model_config" title="Link to this definition"></a></dt>
-<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.utils.config.get_config">
-<span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.utils.config.Config" title="src.utils.config.Config"><span class="pre">Config</span></a></span></span><a class="reference internal" href="../_modules/src/utils/config.html#get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.get_config" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#src.utils.config.Config" title="src.utils.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.utils.config.reload_config">
-<span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">reload_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.utils.config.Config" title="src.utils.config.Config"><span class="pre">Config</span></a></span></span><a class="reference internal" href="../_modules/src/utils/config.html#reload_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.reload_config" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#src.utils.config.Config" title="src.utils.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.utils.config.get_data_path">
-<span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">get_data_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#get_data_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.get_data_path" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.utils.config.get_raw_path">
-<span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">get_raw_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#get_raw_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.get_raw_path" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.utils.config.get_processed_path">
-<span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">get_processed_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#get_processed_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.get_processed_path" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.utils.config.get_chromadb_url">
-<span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">get_chromadb_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#get_chromadb_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.get_chromadb_url" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.utils.config.get_ollama_url">
-<span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">get_ollama_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#get_ollama_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.get_ollama_url" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.utils.config.get_streamlit_url">
-<span class="sig-prename descclassname"><span class="pre">src.utils.config.</span></span><span class="sig-name descname"><span class="pre">get_streamlit_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/src/utils/config.html#get_streamlit_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.config.get_streamlit_url" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function" id="module-src.utils.logger">
-<dt class="sig sig-object py" id="src.utils.logger.setup_logger">
-<span class="sig-prename descclassname"><span class="pre">src.utils.logger.</span></span><span class="sig-name descname"><span class="pre">setup_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/logger.html#setup_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.logger.setup_logger" title="Link to this definition"></a></dt>
-<dd><p>Setup logger with syslog-style formatting</p>
-</dd></dl>
-
+  <section id="src">
+<h1>src<a class="headerlink" href="#src" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_get_datasets.html">01_get_datasets module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_get_datasets.html#get_datasets.download_dataset"><code class="docutils literal notranslate"><span class="pre">download_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02_preview_datasets.html">02_preview_datasets module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_load_datasets.html">03_load_datasets module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03_load_datasets.html#load_datasets.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_load_datasets.html#load_datasets.load_all_datasets"><code class="docutils literal notranslate"><span class="pre">load_all_datasets()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_load_datasets.html#load_datasets.get_dataset_summary"><code class="docutils literal notranslate"><span class="pre">get_dataset_summary()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04_build_chromadb.html">04_build_chromadb module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_log_labeling.html">05_log_labeling module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05_log_labeling.html#log_labeling.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.utils.html">src.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#module-src.utils.chromadb_client">src.utils.chromadb_client module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.__init__"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.connect"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.test_connection"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.test_connection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.get_or_create_collection"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.get_or_create_collection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.add_documents"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.add_documents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.query"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.query()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.get_collection_info"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.get_collection_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.list_collections"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.list_collections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.delete_collection"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.delete_collection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.ChromaDBClient.health_check"><code class="docutils literal notranslate"><span class="pre">ChromaDBClient.health_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.chromadb_client.test_chromadb_connection"><code class="docutils literal notranslate"><span class="pre">test_chromadb_connection()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#module-src.utils.config">src.utils.config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.DATA_DIR"><code class="docutils literal notranslate"><span class="pre">Config.DATA_DIR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.RAW_DIR"><code class="docutils literal notranslate"><span class="pre">Config.RAW_DIR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.PROCESSED_DIR"><code class="docutils literal notranslate"><span class="pre">Config.PROCESSED_DIR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.CHROMADB_HOST"><code class="docutils literal notranslate"><span class="pre">Config.CHROMADB_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.CHROMADB_PORT"><code class="docutils literal notranslate"><span class="pre">Config.CHROMADB_PORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.CHROMADB_URL"><code class="docutils literal notranslate"><span class="pre">Config.CHROMADB_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.OLLAMA_HOST"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.OLLAMA_PORT"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_PORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.OLLAMA_URL"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.OLLAMA_DEFAULT_MODEL"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_DEFAULT_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.OLLAMA_FALLBACK_MODEL"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_FALLBACK_MODEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.OLLAMA_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.OLLAMA_MAX_TOKENS"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_MAX_TOKENS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.OLLAMA_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">Config.OLLAMA_TEMPERATURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.STREAMLIT_HOST"><code class="docutils literal notranslate"><span class="pre">Config.STREAMLIT_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.STREAMLIT_PORT"><code class="docutils literal notranslate"><span class="pre">Config.STREAMLIT_PORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.STREAMLIT_URL"><code class="docutils literal notranslate"><span class="pre">Config.STREAMLIT_URL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Config.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.DEBUG_MODE"><code class="docutils literal notranslate"><span class="pre">Config.DEBUG_MODE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.ENVIRONMENT"><code class="docutils literal notranslate"><span class="pre">Config.ENVIRONMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.get_data_path"><code class="docutils literal notranslate"><span class="pre">Config.get_data_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.get_raw_path"><code class="docutils literal notranslate"><span class="pre">Config.get_raw_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.get_processed_path"><code class="docutils literal notranslate"><span class="pre">Config.get_processed_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.chromadb_url"><code class="docutils literal notranslate"><span class="pre">Config.chromadb_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.llm_url"><code class="docutils literal notranslate"><span class="pre">Config.llm_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.streamlit_url"><code class="docutils literal notranslate"><span class="pre">Config.streamlit_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.is_development"><code class="docutils literal notranslate"><span class="pre">Config.is_development()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.is_debug"><code class="docutils literal notranslate"><span class="pre">Config.is_debug()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.config.Config.model_config"><code class="docutils literal notranslate"><span class="pre">Config.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.get_config"><code class="docutils literal notranslate"><span class="pre">get_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.reload_config"><code class="docutils literal notranslate"><span class="pre">reload_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.get_data_path"><code class="docutils literal notranslate"><span class="pre">get_data_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.get_raw_path"><code class="docutils literal notranslate"><span class="pre">get_raw_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.get_processed_path"><code class="docutils literal notranslate"><span class="pre">get_processed_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.get_chromadb_url"><code class="docutils literal notranslate"><span class="pre">get_chromadb_url()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.get_llm_url"><code class="docutils literal notranslate"><span class="pre">get_llm_url()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.config.get_streamlit_url"><code class="docutils literal notranslate"><span class="pre">get_streamlit_url()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#module-src.utils.log_classifier">src.utils.log_classifier module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.log_classifier.classify_single_log"><code class="docutils literal notranslate"><span class="pre">classify_single_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.log_classifier.classify_log_batch"><code class="docutils literal notranslate"><span class="pre">classify_log_batch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.log_classifier.search_chromadb_for_patterns"><code class="docutils literal notranslate"><span class="pre">search_chromadb_for_patterns()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.log_classifier.extract_techniques_from_similarity"><code class="docutils literal notranslate"><span class="pre">extract_techniques_from_similarity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.log_classifier.calculate_similarity_confidence"><code class="docutils literal notranslate"><span class="pre">calculate_similarity_confidence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.log_classifier.get_classification_summary"><code class="docutils literal notranslate"><span class="pre">get_classification_summary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.log_classifier.print_classification_results"><code class="docutils literal notranslate"><span class="pre">print_classification_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#module-src.utils.logger">src.utils.logger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.logger.setup_logger"><code class="docutils literal notranslate"><span class="pre">setup_logger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#module-src.utils.loki_client">src.utils.loki_client module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.loki_client.fetch_logs"><code class="docutils literal notranslate"><span class="pre">fetch_logs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.loki_client.get_mock_logs"><code class="docutils literal notranslate"><span class="pre">get_mock_logs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.loki_client.get_logs_with_fallback"><code class="docutils literal notranslate"><span class="pre">get_logs_with_fallback()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#module-src.utils.mitre_mapper">src.utils.mitre_mapper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.mitre_mapper.map_content_to_mitre_techniques"><code class="docutils literal notranslate"><span class="pre">map_content_to_mitre_techniques()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.mitre_mapper.get_technique_confidence"><code class="docutils literal notranslate"><span class="pre">get_technique_confidence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.mitre_mapper.expand_technique_mapping"><code class="docutils literal notranslate"><span class="pre">expand_technique_mapping()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.mitre_mapper.get_technique_description"><code class="docutils literal notranslate"><span class="pre">get_technique_description()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.mitre_mapper.format_technique_with_description"><code class="docutils literal notranslate"><span class="pre">format_technique_with_description()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#module-src.utils.ollama_client">src.utils.ollama_client module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.ollama_client.LLMClient"><code class="docutils literal notranslate"><span class="pre">LLMClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.ollama_client.LLMClient.__init__"><code class="docutils literal notranslate"><span class="pre">LLMClient.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.ollama_client.LLMClient.test_connection"><code class="docutils literal notranslate"><span class="pre">LLMClient.test_connection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.ollama_client.LLMClient.get_available_models"><code class="docutils literal notranslate"><span class="pre">LLMClient.get_available_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.ollama_client.LLMClient.generate"><code class="docutils literal notranslate"><span class="pre">LLMClient.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.ollama_client.LLMClient.classify_cybersecurity_log"><code class="docutils literal notranslate"><span class="pre">LLMClient.classify_cybersecurity_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.utils.html#src.utils.ollama_client.LLMClient.health_check"><code class="docutils literal notranslate"><span class="pre">LLMClient.health_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.utils.html#src.utils.ollama_client.test_llm_connection"><code class="docutils literal notranslate"><span class="pre">test_llm_connection()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html#module-src.utils">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.web_ui.html">src.web_ui package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.web_ui.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.web_ui.html#src-web-ui-app-module">src.web_ui.app module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.web_ui.html#module-src.web_ui">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
@@ -430,7 +225,7 @@ Loads settings from environment variables using pydantic-settings.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../user_guide/datasets.html" class="btn btn-neutral float-left" title="Datasets Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="config.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="01_get_datasets.html" class="btn btn-neutral float-right" title="01_get_datasets module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

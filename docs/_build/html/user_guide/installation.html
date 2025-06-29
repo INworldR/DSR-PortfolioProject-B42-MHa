@@ -54,9 +54,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/config.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/datasets.html">Datasets API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
 </ul>
 
         </div>
@@ -130,7 +128,7 @@
 <p>Edit <cite>.env</cite> to configure:</p>
 <ul class="simple">
 <li><p><strong>ChromaDB</strong>: Database connection settings</p></li>
-<li><p><strong>Ollama</strong>: LLM model and connection settings</p></li>
+<li><p><strong>LLM</strong>: LLM model and connection settings</p></li>
 <li><p><strong>Streamlit</strong>: Web interface settings</p></li>
 </ul>
 </section>
@@ -139,7 +137,7 @@
 <p>The system works with default settings:</p>
 <ul class="simple">
 <li><p>ChromaDB: localhost:8000</p></li>
-<li><p>Ollama: localhost:11434 (llama3.1:8b model)</p></li>
+<li><p>LLM: localhost:11434 (llama3.1:8b model)</p></li>
 <li><p>Streamlit: localhost:8501</p></li>
 </ul>
 </section>
@@ -148,14 +146,14 @@
 <p><strong>Common Issues:</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Port Conflicts</strong>: Change ports in <cite>.env</cite> file</p></li>
-<li><p><strong>Memory Issues</strong>: Use smaller Ollama models</p></li>
+<li><p><strong>Memory Issues</strong>: Use smaller LLM models</p></li>
 <li><p><strong>Dataset Download Failures</strong>: Check internet connection and Hugging Face access</p></li>
 </ol>
 <p><strong>Getting Help:</strong></p>
 <ul class="simple">
 <li><p>Check the logs in <cite>logs/</cite> directory</p></li>
 <li><p>Review the configuration in <cite>src/utils/config.py</cite></p></li>
-<li><p>Ensure all services are running (ChromaDB, Ollama)</p></li>
+<li><p>Ensure all services are running (ChromaDB, LLM)</p></li>
 </ul>
 </section>
 </section>

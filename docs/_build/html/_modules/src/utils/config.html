@@ -44,9 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/installation.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/quickstart.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/datasets.html">Datasets Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/config.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/datasets.html">Datasets API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
 </ul>
 
         </div>
@@ -90,7 +88,7 @@
 
 
 <div class="viewcode-block" id="Config">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
     <span class="c1"># Data Paths</span>
     <span class="n">DATA_DIR</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
@@ -102,7 +100,7 @@
     <span class="n">CHROMADB_PORT</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
     <span class="n">CHROMADB_URL</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="c1"># Ollama</span>
+    <span class="c1"># LLM</span>
     <span class="n">OLLAMA_HOST</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
     <span class="n">OLLAMA_PORT</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">11434</span><span class="p">)</span>
     <span class="n">OLLAMA_URL</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -123,44 +121,44 @@
     <span class="n">ENVIRONMENT</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;development&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Config.Config">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.Config">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.Config">[docs]</a>
     <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
         <span class="n">env_file</span> <span class="o">=</span> <span class="s2">&quot;.env&quot;</span>
         <span class="n">extra</span> <span class="o">=</span> <span class="s2">&quot;ignore&quot;</span></div>
 
 
 <div class="viewcode-block" id="Config.get_data_path">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.get_data_path">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.get_data_path">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_data_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DATA_DIR</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Config.get_raw_path">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.get_raw_path">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.get_raw_path">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_raw_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">RAW_DIR</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Config.get_processed_path">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.get_processed_path">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.get_processed_path">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_processed_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">PROCESSED_DIR</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Config.chromadb_url">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.chromadb_url">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.chromadb_url">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">chromadb_url</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">CHROMADB_URL</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">CHROMADB_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">CHROMADB_PORT</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
 
-<div class="viewcode-block" id="Config.ollama_url">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.ollama_url">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">ollama_url</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="Config.llm_url">
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.llm_url">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">llm_url</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">OLLAMA_URL</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">OLLAMA_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">OLLAMA_PORT</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
 
 <div class="viewcode-block" id="Config.streamlit_url">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.streamlit_url">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.streamlit_url">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">streamlit_url</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">STREAMLIT_URL</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">STREAMLIT_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">STREAMLIT_PORT</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -168,13 +166,13 @@
 
 
 <div class="viewcode-block" id="Config.is_development">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.is_development">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.is_development">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_development</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ENVIRONMENT</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;development&quot;</span></div>
 
 
 <div class="viewcode-block" id="Config.is_debug">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.Config.is_debug">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.Config.is_debug">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEBUG_MODE</span></div>
 </div>
@@ -187,14 +185,14 @@
 
 <span class="c1"># Convenience functions</span>
 <div class="viewcode-block" id="get_config">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.get_config">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.get_config">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_config</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">config</span></div>
 
 
 
 <div class="viewcode-block" id="reload_config">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.reload_config">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.reload_config">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">reload_config</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
     <span class="k">global</span> <span class="n">config</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
@@ -203,42 +201,42 @@
 
 
 <div class="viewcode-block" id="get_data_path">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.get_data_path">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.get_data_path">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_data_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">get_data_path</span><span class="p">()</span></div>
 
 
 
 <div class="viewcode-block" id="get_raw_path">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.get_raw_path">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.get_raw_path">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_raw_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">get_raw_path</span><span class="p">()</span></div>
 
 
 
 <div class="viewcode-block" id="get_processed_path">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.get_processed_path">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.get_processed_path">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_processed_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">get_processed_path</span><span class="p">()</span></div>
 
 
 
 <div class="viewcode-block" id="get_chromadb_url">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.get_chromadb_url">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.get_chromadb_url">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_chromadb_url</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">chromadb_url</span><span class="p">()</span></div>
 
 
 
-<div class="viewcode-block" id="get_ollama_url">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.get_ollama_url">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_ollama_url</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">ollama_url</span><span class="p">()</span></div>
+<div class="viewcode-block" id="get_llm_url">
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.get_llm_url">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_llm_url</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">llm_url</span><span class="p">()</span></div>
 
 
 
 <div class="viewcode-block" id="get_streamlit_url">
-<a class="viewcode-back" href="../../../api/modules.html#src.utils.config.get_streamlit_url">[docs]</a>
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.config.get_streamlit_url">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_streamlit_url</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">streamlit_url</span><span class="p">()</span></div>
 
@@ -250,11 +248,11 @@
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw Path: </span><span class="si">{</span><span class="n">get_raw_path</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processed Path: </span><span class="si">{</span><span class="n">get_processed_path</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ChromaDB URL: </span><span class="si">{</span><span class="n">get_chromadb_url</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ollama URL: </span><span class="si">{</span><span class="n">get_ollama_url</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LLM URL: </span><span class="si">{</span><span class="n">get_llm_url</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Streamlit URL: </span><span class="si">{</span><span class="n">get_streamlit_url</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Environment: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">ENVIRONMENT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Debug Mode: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">DEBUG_MODE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ollama Default Model: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">OLLAMA_DEFAULT_MODEL</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LLM Default Model: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">OLLAMA_DEFAULT_MODEL</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
            </div>

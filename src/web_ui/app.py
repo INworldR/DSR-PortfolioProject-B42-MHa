@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore")
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from src.utils.config import get_config, get_streamlit_url
-from src.utils.ollama_client import OllamaClient
+from src.utils.llm_client import LLMClient
 from src.utils.chromadb_client import ChromaDBClient
 
 # Page config
@@ -41,18 +41,18 @@ def main():
         # Health checks
         st.subheader("Service Status")
 
-        # Ollama health check
+        # LLM health check
         try:
-            ollama_client = OllamaClient()
-            ollama_health = ollama_client.health_check()
+            llm_client = LLMClient()
+            llm_health = llm_client.health_check()
 
-            if ollama_health["status"] == "healthy":
-                st.success("✅ Ollama: Connected")
-                st.write(f"Models: {len(ollama_health['models'])}")
+            if llm_health["status"] == "healthy":
+                st.success("✅ LLM: Connected")
+                st.write(f"Models: {len(llm_health['models'])}")
             else:
-                st.error("❌ Ollama: Disconnected")
+                st.error("❌ LLM: Disconnected")
         except Exception as e:
-            st.error(f"❌ Ollama: Error - {e}")
+            st.error(f"❌ LLM: Error - {e}")
 
         # ChromaDB health check
         try:

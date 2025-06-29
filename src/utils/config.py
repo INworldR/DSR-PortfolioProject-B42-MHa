@@ -24,7 +24,7 @@ class Config(BaseSettings):
     CHROMADB_PORT: int = Field(default=8000)
     CHROMADB_URL: Optional[str] = None
 
-    # Ollama
+    # LLM
     OLLAMA_HOST: str = Field(default="localhost")
     OLLAMA_PORT: int = Field(default=11434)
     OLLAMA_URL: Optional[str] = None
@@ -60,7 +60,7 @@ class Config(BaseSettings):
     def chromadb_url(self) -> str:
         return self.CHROMADB_URL or f"http://{self.CHROMADB_HOST}:{self.CHROMADB_PORT}"
 
-    def ollama_url(self) -> str:
+    def llm_url(self) -> str:
         return self.OLLAMA_URL or f"http://{self.OLLAMA_HOST}:{self.OLLAMA_PORT}"
 
     def streamlit_url(self) -> str:
@@ -106,8 +106,8 @@ def get_chromadb_url() -> str:
     return config.chromadb_url()
 
 
-def get_ollama_url() -> str:
-    return config.ollama_url()
+def get_llm_url() -> str:
+    return config.llm_url()
 
 
 def get_streamlit_url() -> str:
@@ -120,8 +120,8 @@ if __name__ == "__main__":
     print(f"Raw Path: {get_raw_path()}")
     print(f"Processed Path: {get_processed_path()}")
     print(f"ChromaDB URL: {get_chromadb_url()}")
-    print(f"Ollama URL: {get_ollama_url()}")
+    print(f"LLM URL: {get_llm_url()}")
     print(f"Streamlit URL: {get_streamlit_url()}")
     print(f"Environment: {config.ENVIRONMENT}")
     print(f"Debug Mode: {config.DEBUG_MODE}")
-    print(f"Ollama Default Model: {config.OLLAMA_DEFAULT_MODEL}")
+    print(f"LLM Default Model: {config.OLLAMA_DEFAULT_MODEL}")

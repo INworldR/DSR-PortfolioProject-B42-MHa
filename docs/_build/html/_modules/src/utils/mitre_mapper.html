@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.utils.mitre_mapper &mdash; DSR Cybersecurity RAG System 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+          <a href="../../../index.html" class="icon icon-home">
+            DSR Cybersecurity RAG System
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/datasets.html">Datasets Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DSR Cybersecurity RAG System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">src.utils.mitre_mapper</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <h1>Source code for src.utils.mitre_mapper</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">MITRE ATT&amp;CK technique mapping utilities.</span>
+<span class="sd">Pattern-based classification of log content to MITRE techniques.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+
+<div class="viewcode-block" id="map_content_to_mitre_techniques">
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.mitre_mapper.map_content_to_mitre_techniques">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">map_content_to_mitre_techniques</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Map log content to MITRE ATT&amp;CK techniques using pattern matching.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        content: Log content to analyze</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple of (techniques list, confidence score)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">content_lower</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">techniques</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Default confidence</span>
+
+    <span class="c1"># Authentication and access patterns</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="s1">&#39;ssh&#39;</span><span class="p">,</span> <span class="s1">&#39;authentication&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">]):</span>
+        <span class="n">techniques</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;T1078 - Valid Accounts&#39;</span><span class="p">,</span> <span class="s1">&#39;T1110 - Brute Force&#39;</span><span class="p">])</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.8</span>
+
+    <span class="c1"># File system access patterns  </span>
+    <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;passwd&#39;</span><span class="p">,</span> <span class="s1">&#39;access&#39;</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="s1">&#39;write&#39;</span><span class="p">]):</span>
+        <span class="n">techniques</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;T1005 - Data from Local System&#39;</span><span class="p">,</span> <span class="s1">&#39;T1083 - File and Directory Discovery&#39;</span><span class="p">])</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+    <span class="c1"># Network scanning patterns</span>
+    <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;scan&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="s1">&#39;network&#39;</span><span class="p">,</span> <span class="s1">&#39;probe&#39;</span><span class="p">]):</span>
+        <span class="n">techniques</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;T1046 - Network Service Discovery&#39;</span><span class="p">,</span> <span class="s1">&#39;T1595 - Active Scanning&#39;</span><span class="p">])</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.9</span>
+
+    <span class="c1"># Privilege escalation patterns</span>
+    <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;privilege&#39;</span><span class="p">,</span> <span class="s1">&#39;escalation&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">]):</span>
+        <span class="n">techniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;T1548 - Abuse Elevation Control Mechanism&#39;</span><span class="p">)</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.8</span>
+
+    <span class="c1"># Process execution patterns</span>
+    <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;process&#39;</span><span class="p">,</span> <span class="s1">&#39;execution&#39;</span><span class="p">,</span> <span class="s1">&#39;command&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">]):</span>
+        <span class="n">techniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;T1059 - Command and Scripting Interpreter&#39;</span><span class="p">)</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.6</span>
+
+    <span class="c1"># Network blocking/filtering patterns</span>
+    <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;firewall&#39;</span><span class="p">,</span> <span class="s1">&#39;blocked&#39;</span><span class="p">,</span> <span class="s1">&#39;denied&#39;</span><span class="p">,</span> <span class="s1">&#39;rejected&#39;</span><span class="p">]):</span>
+        <span class="n">techniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;T1095 - Non-Application Layer Protocol&#39;</span><span class="p">)</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+    <span class="c1"># DNS and domain patterns</span>
+    <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;dns&#39;</span><span class="p">,</span> <span class="s1">&#39;domain&#39;</span><span class="p">,</span> <span class="s1">&#39;resolve&#39;</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">]):</span>
+        <span class="n">techniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;T1071 - Application Layer Protocol&#39;</span><span class="p">)</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.6</span>
+
+    <span class="c1"># Default fallback</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">techniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;T1059 - Command and Scripting Interpreter&#39;</span><span class="p">)</span>
+        <span class="n">confidence</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">techniques</span><span class="p">)),</span> <span class="n">confidence</span></div>
+
+
+
+<div class="viewcode-block" id="get_technique_confidence">
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.mitre_mapper.get_technique_confidence">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_technique_confidence</span><span class="p">(</span><span class="n">techniques</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate confidence score based on technique specificity and content analysis.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        techniques: List of MITRE techniques</span>
+<span class="sd">        content: Original log content</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Confidence score between 0.0 and 1.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">content_lower</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># High confidence indicators</span>
+    <span class="n">high_confidence_words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;scan&#39;</span><span class="p">,</span> <span class="s1">&#39;attack&#39;</span><span class="p">,</span> <span class="s1">&#39;intrusion&#39;</span><span class="p">,</span> <span class="s1">&#39;malware&#39;</span><span class="p">,</span> <span class="s1">&#39;exploit&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">high_confidence_words</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">0.9</span>
+
+    <span class="c1"># Medium confidence indicators  </span>
+    <span class="n">medium_confidence_words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;suspicious&#39;</span><span class="p">,</span> <span class="s1">&#39;failed&#39;</span><span class="p">,</span> <span class="s1">&#39;denied&#39;</span><span class="p">,</span> <span class="s1">&#39;blocked&#39;</span><span class="p">,</span> <span class="s1">&#39;unauthorized&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">medium_confidence_words</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">0.7</span>
+
+    <span class="c1"># Default confidence based on technique count</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">techniques</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.6</span>
+
+    <span class="k">return</span> <span class="mf">0.5</span></div>
+
+
+
+<div class="viewcode-block" id="expand_technique_mapping">
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.mitre_mapper.expand_technique_mapping">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">expand_technique_mapping</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">existing_techniques</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Expand technique mapping with additional context-aware techniques.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        content: Log content</span>
+<span class="sd">        existing_techniques: Already identified techniques</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Expanded list of techniques</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">content_lower</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">additional_techniques</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># If we detected authentication issues, add related techniques</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="s1">&#39;T1078&#39;</span> <span class="ow">in</span> <span class="n">tech</span> <span class="ow">or</span> <span class="s1">&#39;T1110&#39;</span> <span class="ow">in</span> <span class="n">tech</span> <span class="k">for</span> <span class="n">tech</span> <span class="ow">in</span> <span class="n">existing_techniques</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;remote&#39;</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="ow">or</span> <span class="s1">&#39;ssh&#39;</span> <span class="ow">in</span> <span class="n">content_lower</span><span class="p">:</span>
+            <span class="n">additional_techniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;T1021 - Remote Services&#39;</span><span class="p">)</span>
+
+    <span class="c1"># If we detected file access, add related techniques  </span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="s1">&#39;T1005&#39;</span> <span class="ow">in</span> <span class="n">tech</span> <span class="ow">or</span> <span class="s1">&#39;T1083&#39;</span> <span class="ow">in</span> <span class="n">tech</span> <span class="k">for</span> <span class="n">tech</span> <span class="ow">in</span> <span class="n">existing_techniques</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;config&#39;</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="ow">or</span> <span class="s1">&#39;system&#39;</span> <span class="ow">in</span> <span class="n">content_lower</span><span class="p">:</span>
+            <span class="n">additional_techniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;T1082 - System Information Discovery&#39;</span><span class="p">)</span>
+
+    <span class="c1"># If we detected network activity, add related techniques</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="s1">&#39;T1046&#39;</span> <span class="ow">in</span> <span class="n">tech</span> <span class="ow">or</span> <span class="s1">&#39;T1595&#39;</span> <span class="ow">in</span> <span class="n">tech</span> <span class="k">for</span> <span class="n">tech</span> <span class="ow">in</span> <span class="n">existing_techniques</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;external&#39;</span> <span class="ow">in</span> <span class="n">content_lower</span> <span class="ow">or</span> <span class="s1">&#39;internet&#39;</span> <span class="ow">in</span> <span class="n">content_lower</span><span class="p">:</span>
+            <span class="n">additional_techniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;T1090 - Proxy&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">existing_techniques</span> <span class="o">+</span> <span class="n">additional_techniques</span></div>
+
+
+
+<span class="c1"># Technique database for reference</span>
+<span class="n">MITRE_TECHNIQUES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;T1078&#39;</span><span class="p">:</span> <span class="s1">&#39;Valid Accounts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1110&#39;</span><span class="p">:</span> <span class="s1">&#39;Brute Force&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1005&#39;</span><span class="p">:</span> <span class="s1">&#39;Data from Local System&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1083&#39;</span><span class="p">:</span> <span class="s1">&#39;File and Directory Discovery&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1046&#39;</span><span class="p">:</span> <span class="s1">&#39;Network Service Discovery&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1595&#39;</span><span class="p">:</span> <span class="s1">&#39;Active Scanning&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1548&#39;</span><span class="p">:</span> <span class="s1">&#39;Abuse Elevation Control Mechanism&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1059&#39;</span><span class="p">:</span> <span class="s1">&#39;Command and Scripting Interpreter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1095&#39;</span><span class="p">:</span> <span class="s1">&#39;Non-Application Layer Protocol&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1071&#39;</span><span class="p">:</span> <span class="s1">&#39;Application Layer Protocol&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1021&#39;</span><span class="p">:</span> <span class="s1">&#39;Remote Services&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1082&#39;</span><span class="p">:</span> <span class="s1">&#39;System Information Discovery&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;T1090&#39;</span><span class="p">:</span> <span class="s1">&#39;Proxy&#39;</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="get_technique_description">
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.mitre_mapper.get_technique_description">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_technique_description</span><span class="p">(</span><span class="n">technique_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get description for a MITRE technique ID.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        technique_id: MITRE technique ID (e.g., &#39;T1078&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Technique description</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">MITRE_TECHNIQUES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">technique_id</span><span class="p">,</span> <span class="s1">&#39;Unknown Technique&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="format_technique_with_description">
+<a class="viewcode-back" href="../../../api/src.utils.html#src.utils.mitre_mapper.format_technique_with_description">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_technique_with_description</span><span class="p">(</span><span class="n">technique_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Format technique ID with description.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        technique_id: MITRE technique ID</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Formatted string like &#39;T1078 - Valid Accounts&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">get_technique_description</span><span class="p">(</span><span class="n">technique_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">technique_id</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, DSR Portfolio Project Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>

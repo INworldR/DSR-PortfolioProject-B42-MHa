@@ -1,6 +1,6 @@
 """
-Ollama client utilities for the RAG Cybersecurity Classification System.
-Provides an interface to the Ollama LLM API for classification and reasoning.
+LLM client utilities for the RAG Cybersecurity Classification System.
+Provides an interface to the LLM LLM API for classification and reasoning.
 """
 
 import json
@@ -12,38 +12,38 @@ from loguru import logger
 from .config import get_config
 
 
-class OllamaClient:
-    """Client for interacting with the Ollama LLM API."""
+class LLMClient:
+    """Client for interacting with the LLM LLM API."""
 
     def __init__(self, config=None):
-        """Initialize the Ollama client with configuration."""
+        """Initialize the LLM client with configuration."""
         self.config = config or get_config()
-        self.base_url = self.config.ollama_url()
+        self.base_url = self.config.llm_url()
         self.default_model = self.config.OLLAMA_DEFAULT_MODEL
         self.fallback_model = self.config.OLLAMA_FALLBACK_MODEL
         self.timeout = self.config.OLLAMA_TIMEOUT
         self.max_tokens = self.config.OLLAMA_MAX_TOKENS
         self.temperature = self.config.OLLAMA_TEMPERATURE
 
-        logger.info(f"Ollama client initialized with URL: {self.base_url}")
+        logger.info(f"LLM client initialized with URL: {self.base_url}")
 
     def test_connection(self) -> bool:
-        """Test connection to the Ollama server."""
+        """Test connection to the LLM server."""
         try:
             response = requests.get(f"{self.base_url}/api/tags", timeout=5)
             if response.status_code == 200:
                 models = response.json()
                 logger.info(
-                    f"Ollama connection successful. Available models: {[m['name'] for m in models.get('models', [])]}"
+                    f"LLM connection successful. Available models: {[m['name'] for m in models.get('models', [])]}"
                 )
                 return True
             else:
                 logger.error(
-                    f"Ollama connection failed with status code: {response.status_code}"
+                    f"LLM connection failed with status code: {response.status_code}"
                 )
                 return False
         except Exception as e:
-            logger.error(f"Ollama connection failed: {e}")
+            logger.error(f"LLM connection failed: {e}")
             return False
 
     def get_available_models(self) -> List[str]:
@@ -63,7 +63,7 @@ class OllamaClient:
     def generate(
         self, prompt: str, model: Optional[str] = None, **kwargs
     ) -> Optional[str]:
-        """Generate a response from the Ollama model."""
+        """Generate a response from the LLM model."""
         model = model or self.default_model
 
         payload = {
@@ -182,7 +182,7 @@ Respond in JSON format:
         return result
 
     def health_check(self) -> Dict[str, Any]:
-        """Perform a health check on the Ollama service."""
+        """Perform a health check on the LLM service."""
         health = {
             "status": "unknown",
             "models": [],
@@ -214,12 +214,12 @@ Respond in JSON format:
         return health
 
 
-def test_ollama_connection():
-    """Test Ollama connection and print results."""
-    client = OllamaClient()
+def test_llm_connection():
+    """Test LLM connection and print results."""
+    client = LLMClient()
 
-    print("=== Ollama Connection Test ===")
-    print(f"Ollama URL: {client.base_url}")
+    print("=== LLM Connection Test ===")
+    print(f"LLM URL: {client.base_url}")
     print(f"Default Model: {client.default_model}")
 
     # Test connection
@@ -239,4 +239,4 @@ def test_ollama_connection():
 
 
 if __name__ == "__main__":
-    test_ollama_connection()
+    test_llm_connection()

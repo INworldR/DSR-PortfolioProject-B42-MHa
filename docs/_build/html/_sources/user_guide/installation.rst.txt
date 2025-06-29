@@ -51,7 +51,7 @@ The system uses environment variables for configuration. Copy the example file:
 Edit `.env` to configure:
 
 * **ChromaDB**: Database connection settings
-* **Ollama**: LLM model and connection settings
+* **LLM**: LLM model and connection settings
 * **Streamlit**: Web interface settings
 
 Default Configuration
@@ -60,7 +60,7 @@ Default Configuration
 The system works with default settings:
 
 * ChromaDB: localhost:8000
-* Ollama: localhost:11434 (llama3.1:8b model)
+* LLM: localhost:11434 (llama3.1:8b model)
 * Streamlit: localhost:8501
 
 Troubleshooting
@@ -69,11 +69,11 @@ Troubleshooting
 **Common Issues:**
 
 1. **Port Conflicts**: Change ports in `.env` file
-2. **Memory Issues**: Use smaller Ollama models
+2. **Memory Issues**: Use smaller LLM models
 3. **Dataset Download Failures**: Check internet connection and Hugging Face access
 
 **Getting Help:**
 
 * Check the logs in `logs/` directory
 * Review the configuration in `src/utils/config.py`
-* Ensure all services are running (ChromaDB, Ollama)
+* Ensure all services are running (ChromaDB, LLM)

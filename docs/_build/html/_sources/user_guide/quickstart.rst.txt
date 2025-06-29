@@ -51,17 +51,17 @@ Step 3: Start Services
 
       chroma run --host localhost --port 8000
 
-2. **Start Ollama** (if not running):
+2. **Start LLM** (if not running):
 
    .. code-block:: bash
 
-      ollama serve
+      llm serve
 
 3. **Pull LLM Model**:
 
    .. code-block:: bash
 
-      ollama pull llama3.1:8b
+      llm pull llama3.1:8b
 
 Step 4: Launch Web Interface
 ---------------------------
@@ -102,5 +102,5 @@ Troubleshooting
 
 * **Dataset Download Fails**: Check internet connection and Hugging Face access
 * **ChromaDB Connection Error**: Ensure ChromaDB is running on port 8000
-* **Ollama Model Not Found**: Run `ollama pull llama3.1:8b`
+* **LLM Model Not Found**: Run `llm pull llama3.1:8b`
 * **Streamlit Port Conflict**: Change port in configuration or kill existing process

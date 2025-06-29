@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# \!/usr/bin/env python3
 """
 Test script to verify the Python environment and installed packages.
 """
@@ -23,7 +23,7 @@ def main():
         # Show key packages
         key_packages = [
             "chromadb",
-            "ollama",
+            "llm",
             "streamlit",
             "fastapi",
             "pydantic",
@@ -32,9 +32,9 @@ def main():
         for package in key_packages:
             try:
                 version = pkg_resources.get_distribution(package).version
-                print(f"✅ {package}: {version}")
+                print(f"[OK] {package}: {version}")
             except pkg_resources.DistributionNotFound:
-                print(f"❌ {package}: Not installed")
+                print(f"[MISSING] {package}: Not installed")
 
     except ImportError:
         print("pkg_resources not available")

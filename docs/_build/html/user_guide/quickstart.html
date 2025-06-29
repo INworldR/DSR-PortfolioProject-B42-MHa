@@ -58,9 +58,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/config.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/datasets.html">Datasets API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
 </ul>
 
         </div>
@@ -132,13 +130,13 @@
 </pre></div>
 </div>
 </li>
-<li><p><strong>Start Ollama</strong> (if not running):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ollama<span class="w"> </span>serve
+<li><p><strong>Start LLM</strong> (if not running):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>llm<span class="w"> </span>serve
 </pre></div>
 </div>
 </li>
 <li><p><strong>Pull LLM Model</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ollama<span class="w"> </span>pull<span class="w"> </span>llama3.1:8b
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>llm<span class="w"> </span>pull<span class="w"> </span>llama3.1:8b
 </pre></div>
 </div>
 </li>
@@ -172,8 +170,8 @@
 <h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Read the <a class="reference internal" href="datasets.html"><span class="doc">Datasets Documentation</span></a> guide for detailed dataset information</p></li>
-<li><p>Explore the <a class="reference internal" href="../api/modules.html"><span class="doc">API Reference</span></a> for API documentation</p></li>
-<li><p>Check the configuration options in <a class="reference internal" href="../api/config.html"><span class="doc">Configuration</span></a></p></li>
+<li><p>Explore the <a class="reference internal" href="../api/modules.html"><span class="doc">src</span></a> for API documentation</p></li>
+<li><p>Check the configuration options in <span class="xref std std-doc">../api/config</span></p></li>
 </ul>
 </section>
 <section id="troubleshooting">
@@ -182,7 +180,7 @@
 <ul class="simple">
 <li><p><strong>Dataset Download Fails</strong>: Check internet connection and Hugging Face access</p></li>
 <li><p><strong>ChromaDB Connection Error</strong>: Ensure ChromaDB is running on port 8000</p></li>
-<li><p><strong>Ollama Model Not Found</strong>: Run <cite>ollama pull llama3.1:8b</cite></p></li>
+<li><p><strong>LLM Model Not Found</strong>: Run <cite>llm pull llama3.1:8b</cite></p></li>
 <li><p><strong>Streamlit Port Conflict</strong>: Change port in configuration or kill existing process</p></li>
 </ul>
 </section>
