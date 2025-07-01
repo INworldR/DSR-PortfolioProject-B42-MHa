@@ -22,7 +22,7 @@ def fetch_logs(limit: int = 10, hours_back: int = 1) -> List[Dict]:
     loki_url = "http://10.43.108.157:3100"
     query_url = f"{loki_url}/loki/api/v1/query"
 
-    params = {"query": '{job\!=""}', "limit": limit}
+    params = {"query": '{job!=""}', "limit": limit}
 
     response = requests.get(query_url, params=params, timeout=10)
     response.raise_for_status()

@@ -33,9 +33,9 @@ sleep 5
 # Check if services are running
 echo "[Tue Jul  1 11:00:29 CEST 2025] Checking service status..."
 if curl -s http://localhost:8501 > /dev/null; then
-    echo "[Tue Jul  1 11:00:29 CEST 2025] ✅ Streamlit ATP Demo running on port 8501"
+    echo "[Tue Jul  1 11:00:29 CEST 2025] Streamlit ATP Demo running on port 8501"
 else
-    echo "[Tue Jul  1 11:00:29 CEST 2025] ❌ Streamlit failed to start"
+    echo "[Tue Jul  1 11:00:29 CEST 2025] Streamlit failed to start"
 fi
 
 echo "[Tue Jul  1 11:00:29 CEST 2025] Service startup complete. PIDs: Streamlit=$STREAMLIT_PID"

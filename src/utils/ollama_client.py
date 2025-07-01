@@ -224,7 +224,7 @@ def test_llm_connection():
 
     # Test connection
     if client.test_connection():
-        print("✅ Connection successful")
+        print("Connection successful")
 
         # Get available models
         models = client.get_available_models()
@@ -235,7 +235,7 @@ def test_llm_connection():
         print(f"Health status: {health['status']}")
 
     else:
-        print("❌ Connection failed")
+        print("Connection failed")
 
 
 if __name__ == "__main__":

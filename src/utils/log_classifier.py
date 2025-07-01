@@ -86,7 +86,7 @@ def search_chromadb_for_patterns(
         collection_name=collection_name, query_texts=[content], n_results=5
     )
 
-    return results
+    return results or {}
 
 
 def extract_techniques_from_similarity(similarity_results: Dict) -> List[str]:

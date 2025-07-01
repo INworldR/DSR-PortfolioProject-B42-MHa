@@ -63,6 +63,9 @@ class ATPChromaDBTester:
         collection = self.chroma_client.get_or_create_collection(
             self.collection_name, metadata={"description": "ATP simulation logs"}
         )
+        if collection is None:
+            logger.error("Failed to create or get ChromaDB collection")
+            return False
         collection.add(documents=documents, metadatas=metadatas, ids=ids)
 
         logger.info(f"Injected {len(documents)} ATP logs into ChromaDB")
@@ -83,13 +86,16 @@ Success: {log['success']}
 Threat Score: {log['threat_score']}/10
 """
 
-    def test_query(self, query_text: str, n_results: int = 3) -> List[Dict[str, Any]]:
+    def test_query(self, query_text: str, n_results: int = 3) -> Dict[str, Any]:
         """Test RAG queries against ATP logs."""
         logger.info(f"Testing query: {query_text}")
 
         collection = self.chroma_client.get_or_create_collection(
             self.collection_name, metadata={"description": "ATP simulation logs"}
         )
+        if collection is None:
+            logger.error("Failed to create or get ChromaDB collection")
+            return {"documents": [[]], "metadatas": [[]], "distances": [[]]}
         results = collection.query(
             query_texts=[query_text],
             n_results=n_results,
