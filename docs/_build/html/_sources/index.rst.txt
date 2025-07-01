@@ -18,6 +18,7 @@ A comprehensive RAG (Retrieval-Augmented Generation) system for cybersecurity cl
    api/modules
    api/config
    api/datasets
+   atp_generator
 
 Indices and tables
 ==================

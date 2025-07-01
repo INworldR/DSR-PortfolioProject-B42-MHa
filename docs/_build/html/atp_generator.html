@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATP Log Generator Module &mdash; DSR Cybersecurity RAG System 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="src.web_ui package" href="api/src.web_ui.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+          <a href="index.html" class="icon icon-home">
+            DSR Cybersecurity RAG System
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_guide/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/datasets.html">Datasets Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">src</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ATP Log Generator Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-features">Key Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apt-group-coverage">APT Group Coverage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apt29-cozy-bear">APT29 (Cozy Bear)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apt1-comment-crew">APT1 (Comment Crew)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lazarus-group">Lazarus Group</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-api">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streamlit-web-interface">Streamlit Web Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#log-format">Log Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chromadb-integration">ChromaDB Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vector-storage">Vector Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rag-queries">RAG Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-atp_log_generator">API Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#atp_log_generator.AttackTechnique"><code class="docutils literal notranslate"><span class="pre">AttackTechnique</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.AttackTechnique.id"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.AttackTechnique.name"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.AttackTechnique.tactic"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.tactic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.AttackTechnique.process"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.process</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.AttackTechnique.command_template"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.command_template</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.AttackTechnique.indicators"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.indicators</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.AttackTechnique.severity"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.AttackTechnique.__init__"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#atp_log_generator.ATPLogGenerator"><code class="docutils literal notranslate"><span class="pre">ATPLogGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.ATPLogGenerator.__init__"><code class="docutils literal notranslate"><span class="pre">ATPLogGenerator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.ATPLogGenerator.generate_attack_sequence"><code class="docutils literal notranslate"><span class="pre">ATPLogGenerator.generate_attack_sequence()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#atp_log_generator.ATPLogGenerator.generate_demo_logs"><code class="docutils literal notranslate"><span class="pre">ATPLogGenerator.generate_demo_logs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#atp_log_generator.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">ATPLogGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">ATPLogGenerator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">ATPLogGenerator.generate_attack_sequence()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">ATPLogGenerator.generate_demo_logs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">AttackTechnique</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.tactic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.process</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.command_template</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.indicators</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.severity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">AttackTechnique.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DSR Cybersecurity RAG System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ATP Log Generator Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/atp_generator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <section id="atp-log-generator-module">
+<h1>ATP Log Generator Module<a class="headerlink" href="#atp-log-generator-module" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The ATP (Advanced Threat Persistence) Log Generator is a sophisticated cybersecurity tool designed to simulate realistic attack patterns from nation-state APT groups. It generates MITRE ATT&amp;CK framework-compliant logs for security testing, threat hunting practice, and portfolio demonstrations.</p>
+</section>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Three APT Group Profiles</strong>: APT29 (Cozy Bear), APT1 (Comment Crew), Lazarus Group</p></li>
+<li><p><strong>16 MITRE ATT&amp;CK Techniques</strong>: Covering complete attack chains from initial access to exfiltration</p></li>
+<li><p><strong>ChromaDB Integration</strong>: Vector database storage for RAG-powered threat intelligence queries</p></li>
+<li><p><strong>Multiple Interfaces</strong>: Command line, Python API, and Streamlit web interface</p></li>
+<li><p><strong>Realistic IOCs</strong>: Generated indicators of compromise with confidence scoring</p></li>
+</ul>
+</section>
+<section id="apt-group-coverage">
+<h2>APT Group Coverage<a class="headerlink" href="#apt-group-coverage" title="Link to this heading"></a></h2>
+<section id="apt29-cozy-bear">
+<h3>APT29 (Cozy Bear)<a class="headerlink" href="#apt29-cozy-bear" title="Link to this heading"></a></h3>
+<p>Russian state-sponsored group targeting government and private organizations.</p>
+<p><strong>Attack Chain:</strong>
+- T1566.001 - Spearphishing Attachment
+- T1059.001 - PowerShell
+- T1055 - Process Injection
+- T1003.001 - LSASS Memory
+- T1021.001 - Remote Desktop Protocol
+- T1041 - Exfiltration Over C2</p>
+</section>
+<section id="apt1-comment-crew">
+<h3>APT1 (Comment Crew)<a class="headerlink" href="#apt1-comment-crew" title="Link to this heading"></a></h3>
+<p>Chinese military unit 61398 focusing on intellectual property theft.</p>
+<p><strong>Attack Chain:</strong>
+- T1190 - Exploit Public-Facing Application
+- T1059.003 - Windows Command Shell
+- T1547.001 - Registry Run Keys
+- T1083 - File and Directory Discovery
+- T1005 - Data from Local System</p>
+</section>
+<section id="lazarus-group">
+<h3>Lazarus Group<a class="headerlink" href="#lazarus-group" title="Link to this heading"></a></h3>
+<p>North Korean state-sponsored group known for financial and espionage operations.</p>
+<p><strong>Attack Chain:</strong>
+- T1566.002 - Spearphishing Link
+- T1204.002 - Malicious File
+- T1112 - Modify Registry
+- T1016 - System Network Configuration Discovery
+- T1039 - Data from Network Shared Drive</p>
+</section>
+</section>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h2>
+<section id="command-line-interface">
+<h3>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate logs for specific APT group</span>
+python<span class="w"> </span>src/atp_log_generator.py
+
+<span class="c1"># Test ChromaDB integration</span>
+python<span class="w"> </span>src/test_chromadb_injection.py
+</pre></div>
+</div>
+</section>
+<section id="python-api">
+<h3>Python API<a class="headerlink" href="#python-api" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">atp_log_generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">ATPLogGenerator</span>
+
+<span class="c1"># Initialize generator</span>
+<span class="n">generator</span> <span class="o">=</span> <span class="n">ATPLogGenerator</span><span class="p">()</span>
+
+<span class="c1"># Generate attack sequence</span>
+<span class="n">logs</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_attack_sequence</span><span class="p">(</span><span class="n">apt29_cozy_bear</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Generate complete demo dataset</span>
+<span class="n">demo_data</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_demo_logs</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="streamlit-web-interface">
+<h3>Streamlit Web Interface<a class="headerlink" href="#streamlit-web-interface" title="Link to this heading"></a></h3>
+<p>Access the interactive demo at <a class="reference external" href="http://10.5.3.6:8501">http://10.5.3.6:8501</a></p>
+<p>Features:
+- APT group selection
+- Configurable log quantity
+- Real-time log generation
+- Copy-paste ready JSON output
+- ChromaDB integration testing</p>
+</section>
+</section>
+<section id="log-format">
+<h2>Log Format<a class="headerlink" href="#log-format" title="Link to this heading"></a></h2>
+<p>Generated logs follow a standardized JSON format:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="kc">t</span><span class="err">imes</span><span class="kc">ta</span><span class="err">mp</span><span class="p">:</span><span class="w"> </span><span class="mi">2025-06-30</span><span class="err">T</span><span class="mi">14</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">15.123</span><span class="err">Z</span><span class="p">,</span>
+<span class="w">  </span><span class="err">eve</span><span class="kc">nt</span><span class="err">_</span><span class="kc">t</span><span class="err">ype</span><span class="p">:</span><span class="w"> </span><span class="err">a</span><span class="kc">t</span><span class="err">p_simula</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">,</span>
+<span class="w">  </span><span class="err">ap</span><span class="kc">t</span><span class="err">_group</span><span class="p">:</span><span class="w"> </span><span class="err">ap</span><span class="kc">t</span><span class="mi">29</span><span class="err">_cozy_bear</span><span class="p">,</span>
+<span class="w">  </span><span class="err">mi</span><span class="kc">tre</span><span class="err">_</span><span class="kc">te</span><span class="err">ch</span><span class="kc">n</span><span class="err">ique</span><span class="p">:</span><span class="w"> </span><span class="err">T</span><span class="mf">1059.001</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">te</span><span class="err">ch</span><span class="kc">n</span><span class="err">ique_</span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="err">PowerShell</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">ta</span><span class="err">c</span><span class="kc">t</span><span class="err">ic</span><span class="p">:</span><span class="w"> </span><span class="err">Execu</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">,</span>
+<span class="w">  </span><span class="err">severi</span><span class="kc">t</span><span class="err">y</span><span class="p">:</span><span class="w"> </span><span class="err">high</span><span class="p">,</span>
+<span class="w">  </span><span class="err">source_ip</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.121.246</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">tar</span><span class="err">ge</span><span class="kc">t</span><span class="err">_hos</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="err">vic</span><span class="kc">t</span><span class="err">im</span><span class="mi">-19</span><span class="p">,</span>
+<span class="w">  </span><span class="err">process_</span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="err">powershell.exe</span><span class="p">,</span>
+<span class="w">  </span><span class="err">comma</span><span class="kc">n</span><span class="err">d_li</span><span class="kc">ne</span><span class="p">:</span><span class="w"> </span><span class="err">powershell.exe</span><span class="w"> </span><span class="mi">-</span><span class="err">Wi</span><span class="kc">n</span><span class="err">dowS</span><span class="kc">t</span><span class="err">yle</span><span class="w"> </span><span class="err">Hidde</span><span class="kc">n</span><span class="w"> </span><span class="mf">-E</span><span class="kc">n</span><span class="err">codedComma</span><span class="kc">n</span><span class="err">d...</span><span class="p">,</span>
+<span class="w">  </span><span class="err">success</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">t</span><span class="err">hrea</span><span class="kc">t</span><span class="err">_score</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">  </span><span class="err">i</span><span class="kc">n</span><span class="err">dica</span><span class="kc">t</span><span class="err">ors</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">powershell.exe</span><span class="p">,</span><span class="w"> </span><span class="err">base</span><span class="mi">64</span><span class="err">_payload</span><span class="p">],</span>
+<span class="w">  </span><span class="err">de</span><span class="kc">te</span><span class="err">c</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="err">_co</span><span class="kc">nf</span><span class="err">ide</span><span class="kc">n</span><span class="err">ce</span><span class="p">:</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">false</span><span class="err">_posi</span><span class="kc">t</span><span class="err">ive_probabili</span><span class="kc">t</span><span class="err">y</span><span class="p">:</span><span class="w"> </span><span class="mf">0.15</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="chromadb-integration">
+<h2>ChromaDB Integration<a class="headerlink" href="#chromadb-integration" title="Link to this heading"></a></h2>
+<p>The ATP Log Generator integrates seamlessly with ChromaDB for advanced threat intelligence capabilities:</p>
+<section id="vector-storage">
+<h3>Vector Storage<a class="headerlink" href="#vector-storage" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Collection</strong>: atp_simulation_logs</p></li>
+<li><p><strong>Embedding Model</strong>: sentence-transformers/all-MiniLM-L6-v2</p></li>
+<li><p><strong>Vector Dimensions</strong>: 384</p></li>
+<li><p><strong>Similarity Metric</strong>: Cosine similarity</p></li>
+</ul>
+</section>
+<section id="rag-queries">
+<h3>RAG Queries<a class="headerlink" href="#rag-queries" title="Link to this heading"></a></h3>
+<p>Supports semantic search queries such as:
+- PowerShell execution techniques
+- Credential dumping attacks
+- Lateral movement methods
+- Data exfiltration patterns
+- Registry persistence techniques</p>
+</section>
+</section>
+<section id="module-atp_log_generator">
+<span id="api-reference"></span><h2>API Reference<a class="headerlink" href="#module-atp_log_generator" title="Link to this heading"></a></h2>
+<p>ATP Log Generator for Portfolio Demo.</p>
+<p>Generates realistic MITRE ATT&amp;CK mapped logs for ChromaDB RAG system testing.
+Supports APT29, APT1, and Lazarus group attack chains with proper techniques.</p>
+<p>Author: DSR Portfolio Project Team</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">atp_log_generator.</span></span><span class="sig-name descname"><span class="pre">AttackTechnique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tactic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/atp_log_generator.html#AttackTechnique"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#atp_log_generator.AttackTechnique" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>MITRE ATT&amp;CK technique definition.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#atp_log_generator.AttackTechnique.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#atp_log_generator.AttackTechnique.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique.tactic">
+<span class="sig-name descname"><span class="pre">tactic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#atp_log_generator.AttackTechnique.tactic" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique.process">
+<span class="sig-name descname"><span class="pre">process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#atp_log_generator.AttackTechnique.process" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique.command_template">
+<span class="sig-name descname"><span class="pre">command_template</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#atp_log_generator.AttackTechnique.command_template" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique.indicators">
+<span class="sig-name descname"><span class="pre">indicators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><a class="headerlink" href="#atp_log_generator.AttackTechnique.indicators" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#atp_log_generator.AttackTechnique.severity" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="atp_log_generator.AttackTechnique.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tactic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#atp_log_generator.AttackTechnique.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="atp_log_generator.ATPLogGenerator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">atp_log_generator.</span></span><span class="sig-name descname"><span class="pre">ATPLogGenerator</span></span><a class="reference internal" href="_modules/atp_log_generator.html#ATPLogGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#atp_log_generator.ATPLogGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generate ATP attack simulation logs for portfolio demonstration.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="atp_log_generator.ATPLogGenerator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/atp_log_generator.html#ATPLogGenerator.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#atp_log_generator.ATPLogGenerator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize ATP log generator with attack chain definitions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="atp_log_generator.ATPLogGenerator.generate_attack_sequence">
+<span class="sig-name descname"><span class="pre">generate_attack_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apt_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_logs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/atp_log_generator.html#ATPLogGenerator.generate_attack_sequence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#atp_log_generator.ATPLogGenerator.generate_attack_sequence" title="Link to this definition"></a></dt>
+<dd><p>Generate attack sequence logs for specified APT group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="atp_log_generator.ATPLogGenerator.generate_demo_logs">
+<span class="sig-name descname"><span class="pre">generate_demo_logs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/atp_log_generator.html#ATPLogGenerator.generate_demo_logs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#atp_log_generator.ATPLogGenerator.generate_demo_logs" title="Link to this definition"></a></dt>
+<dd><p>Generate complete demo dataset for all APT groups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="atp_log_generator.main">
+<span class="sig-prename descclassname"><span class="pre">atp_log_generator.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/atp_log_generator.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#atp_log_generator.main" title="Link to this definition"></a></dt>
+<dd><p>Main function for standalone execution.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">atp_log_generator.</span></span><span class="sig-name descname"><span class="pre">ATPLogGenerator</span></span><a class="reference internal" href="_modules/atp_log_generator.html#ATPLogGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Generate ATP attack simulation logs for portfolio demonstration.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/atp_log_generator.html#ATPLogGenerator.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Initialize ATP log generator with attack chain definitions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">generate_attack_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apt_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_logs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/atp_log_generator.html#ATPLogGenerator.generate_attack_sequence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>Generate attack sequence logs for specified APT group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">generate_demo_logs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/atp_log_generator.html#ATPLogGenerator.generate_demo_logs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Generate complete demo dataset for all APT groups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id4">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">atp_log_generator.</span></span><span class="sig-name descname"><span class="pre">AttackTechnique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tactic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/atp_log_generator.html#AttackTechnique"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd><p>MITRE ATT&amp;CK technique definition.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">tactic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">command_template</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">indicators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">severity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tactic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api/src.web_ui.html" class="btn btn-neutral float-left" title="src.web_ui package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, DSR Portfolio Project Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>
