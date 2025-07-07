@@ -48,7 +48,7 @@ def main():
     # Display results
     print_classification_results(results)
 
-    print("\nLog classification completed successfully\!")
+    print("\nLog classification completed successfully!")
 
 
 if __name__ == "__main__":
